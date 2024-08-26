@@ -125,6 +125,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # In production, Django collects static files into this directory
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Only used in production when running `collectstatic`
 
+# For Media
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
