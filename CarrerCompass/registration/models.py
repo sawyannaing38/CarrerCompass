@@ -1,26 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Model
+
+# Create your models here.
+class User(AbstractUser):
+    pass 
+
 class Company(models.Model):
-    companyName = models.CharField(max_length=64)
-    email = models.EmailField()
-    password = models.CharField(max_length=20)
-    location = models.CharField(max_length=100)
-    description = models.CharField(max_length=300)
-    image = models.ImageField(upload_to="images/")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="comapny")
+    image = models.ImageField(upload_to='images/')
+    location = models.TextField()
+    description = models.TextField()  
 
-# For Employee
 class Employee(models.Model):
-    userName = models.CharField(max_length=64)
-    email = models.EmailField()
-    password = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
-    age = models.IntegerField()
-    gender = models.CharField(max_length=6)
-    education = models.CharField(max_length=100)
-    experience = models.CharField(max_length=64)
-    currentCompany = models.CharField(max_length=64)
-    profession = models.CharField(max_length=64)
-    skills = models.CharField(max_length=300)
-    description = models.CharField(max_length=300)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="employee")
     image = models.ImageField(upload_to="images/")
+    location = models.TextField()
+    description = models.TextField()
+    age = models.IntegerField()
+    currentCompany =models.CharField(max_length=64)
+    gender = models.TextField(choices=[("male", "Male"), ("female", "Female")])
+    education = models.CharField(max_length=64)
+    experience = models.TextField()
+    profession = models.TextField()
+    skills = models.TextField()

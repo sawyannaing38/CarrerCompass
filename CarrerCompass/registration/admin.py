@@ -1,14 +1,17 @@
 from django.contrib import admin
-from . import models
-
-# Admin view for company
-class AdminCompany(admin.ModelAdmin):
-    list_display = ["companyName", "location", "email", "description", "image"]
-
-# Admin view for Employee
-class AdminEmployee(admin.ModelAdmin):
-    list_display = ["userName", "location", "email", "age", "gender", "education", "experience", "profession","currentCompany", "skills", "description", "image"]
+from .models import User, Employee, Company
 
 # Register your models here.
-admin.site.register(models.Company, AdminCompany)
-admin.site.register(models.Employee, AdminEmployee)
+class AdminCompany(admin.ModelAdmin):
+    list_display = ["user", "image", "location", "description"]
+
+
+class AdminEmployee(admin.ModelAdmin):
+    list_display = ["user", "image", "location", "age", "gender", "education", "experience", "profession", "skills", "description"]
+
+class AdminUser(admin.ModelAdmin):
+    list_display = ["username", "email", "password"]
+
+admin.site.register(Employee, AdminEmployee)
+admin.site.register(Company, AdminCompany)
+admin.site.register(User, AdminUser)
