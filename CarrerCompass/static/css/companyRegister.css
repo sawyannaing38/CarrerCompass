@@ -51,6 +51,17 @@
     margin: 20px 0px;
 }
 
+.error 
+{
+    font-family: var(--textColor);
+    color: red;
+}
+
+.wrapper 
+{
+    display: flex;
+    flex-direction: column;
+}
 
 .information p
 {

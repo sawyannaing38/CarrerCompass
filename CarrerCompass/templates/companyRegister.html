@@ -18,18 +18,40 @@
                 <p>Already have an account?<span>Login Here</span></p>
                 <form action="#">
                     <div class="form-data">
-                        <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required>
-                        <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required>
+                        <div class="wrapper">
+                            <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required>
+                            <span class="name-error error"></span>
+                        </div>
+                        
+                        <div class="wrapper">
+                            <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required>
+                            <span class="location-error error"></span>
+                        </div>
                     </div>
                     <div class="form-data">
-                        <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required>
-                        <input type="file" name="image" id="image" multiple>
+                        <div class="wrapper">
+                            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required>
+                            <span class="email-error"></span>
+                        </div>
+                        <div class="wrapper">
+                            <input type="file" name="image" id="image" multiple>
+                            <span class="file-error error"></span>
+                        </div>
                     </div>
                     <div class="form-data">
-                        <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
-                        <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" autocomplete="off" required>
+                        <div class="wrapper">
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
+                            <span class="password-error error"></span>
+                        </div>
+                        <div class="wrapper">
+                            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" autocomplete="off" required>
+                            <span class="confirm-error error"></span>
+                        </div>
                     </div>
-                    <textarea name="description" id="description" placeholder="Description" rows="3"></textarea>
+                    <div class="wrapper">
+                        <textarea name="description" id="description" placeholder="Description" rows="3"></textarea>
+                        <span class="description-error error"></span>
+                    </div>
                     <input type="submit" value="Sign Up" class="submitBtn">
                 </form>
 
