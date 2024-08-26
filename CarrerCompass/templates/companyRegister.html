@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Company Register
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/companyRegister.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="parent">
+        <div class="container">
+            <div class="information">
+                <h1>Sign Up here for Your Dream Employees</h1>
+                <p>Already have an account?<span>Login Here</span></p>
+                <form action="#">
+                    <div class="form-data">
+                        <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required>
+                        <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required>
+                    </div>
+                    <div class="form-data">
+                        <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required>
+                        <input type="file" name="image" id="image" multiple>
+                    </div>
+                    <div class="form-data">
+                        <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
+                        <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" autocomplete="off" required>
+                    </div>
+                    <textarea name="description" id="description" placeholder="Description" rows="3"></textarea>
+                    <input type="submit" value="Sign Up" class="submitBtn">
+                </form>
+
+                <p id="error"></p>
+            </div>
+    
+            <div class="image">
+                <img class="img" src="./../static/images//company.png" alt="Company">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/companyRegister.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+body 
+{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header 
+{
+    background-color: var(--backColor);
+    font-family: var(--headingFont);
+    font-weight: 500;
+    font-size: var(--textSize);
+    box-shadow: 0px 0px 10px 1px var(--textColor);
+}
+
+.navigation-bar, .navigation-bar ul
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-bar ul 
+{
+    list-style-type: none;
+}
+
+.navigation-bar ul li 
+{
+    padding: 0px 5px;
+}
+
+.header .navigation-bar ul li a 
+{
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.logo 
+{
+    width: 80px;
+    margin-left: 30px;
+}
+
+.navigation-bar ul:nth-child(2) li
+{
+    margin: 0px 10px;
+    position: relative;
+}
+
+.navigation-bar ul:nth-child(2) li:hover::after 
+{
+    width: 100%;
+}
+
+
+.navigation-bar ul:nth-child(2) li::after
+{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    background-color: var(--textColor);
+    left: 0;
+    bottom: -5px;
+    transition: all 0.3s linear;
+    box-shadow: 0px 0px 10px 1px var(--textColor);
+}
+
+.navigation-bar ul:nth-child(3)
+{
+    margin-right: 30px;
+}
+
+.navigation-bar ul:nth-child(3) li 
+{
+    margin: 0px 15px;
+}
+
+.navigation-bar ul:nth-child(3) li a 
+{
+    padding: 5px 10px;
+}
+
+.signin 
+{
+    border: 1px solid var(--textColor);
+    border-radius: 15px;
+    transition: all 0.15s linear;
+}
+
+.signin:hover 
+{
+    border-color: var(--styleColor);
+}
+
+.header .navigation-bar ul li a.register 
+{
+    transition: all 0.15s linear;
+}
+
+.header .navigation-bar ul li a.register:hover 
+{
+    color: var(--styleColor);
+}

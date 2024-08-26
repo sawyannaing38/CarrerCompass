@@ -3,9 +3,29 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    if request.user.is_authenticated:
+        if hasattr(request.user, "company"):
+            return render(request, "index.html", {
+                "type" : "company",
+                "company" : request.user.company
+            })
+        
+        elif hasattr(request.user, "employee"):
+            return render(request, "index.html", {
+                "type" : "employee",
+                "employee" : request.user.employee
+            })
 
-# View for register
+    return render(request, "index.html", {
+        "type" : "guest"
+    })
+
+# For Registering
 def register_view(request):
+    return render(request, "choose.html")
+
+# For Company Registering
+def company_register(request):
+
     if request.method == "GET":
-        return render(request, "register.html")
+        return render(request, "companyRegister.html")

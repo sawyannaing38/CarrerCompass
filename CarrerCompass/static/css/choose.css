@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+body 
+{
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--backColor);
+}
+
+.parent 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--textFont);
+}
+
+.parent a 
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--textColor);
+    margin: 30px 0px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    transform: translateX(-20px);
+    padding: 10px 20px;
+    transition: all 1s linear;
+}
+
+.parent a span 
+{
+    margin: 0px 10px;
+}
+
+.parent a span.icon 
+{
+    color: transparent;
+    transition: all 0.3s linear;
+}
+
+.parent a:hover span.icon 
+{
+    color: var(--textColor);
+    transform: translateX(10px);
+}

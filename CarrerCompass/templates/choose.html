@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{% static 'css/choose.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="parent">
+        <div>
+            <a href="{% url 'company_register' %}" class="info">
+                <span></span>
+                <span class="material-symbols-outlined icon">
+                    arrow_forward
+                </span>
+            </a>
+        </div>
+        <div>
+            <a href="#" class="info">
+                <span></span>
+                <span class="material-symbols-outlined icon">
+                    arrow_forward
+                </span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/choose.js' %}"></script>
+{% endblock %}
