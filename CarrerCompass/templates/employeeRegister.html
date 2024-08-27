@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Company Register
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/companyRegister.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="parent">
+        <div class="container" style="align-items: center;">
+            <div class="information">
+                <h1>Sign Up here for Your Dream Job</h1>
+                <p>Already have an account?<span>Login Here</span></p>
+                <form action="{% url 'employee_register' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <input type="text" value="{{data.username}}" name="username" id="username" placeholder="Name" autocomplete="off" autofocus required>
+                            <span class="error username-error">
+                                {% if usernameMessage %}
+                                    {{usernameMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="wrapper">
+                            <input type="text" value="{{data.location}}" name="location" id="location" placeholder="Location" autocomplete="off" required>
+                            <span class="error location-error">
+                                {% if locationMessage %}
+                                    {{locationMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <input type="email" value="{{data.email}}" name="email" id="email" autocomplete="off" placeholder="Email" required>
+                            <span class="error">
+                                {% if emailMessage %}
+                                    {{emailMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="wrapper">
+                            <input type="number" value="{{data.age}}" name="age" id="age" min="14" autocomplete="off" placeholder="Age" required>
+                            <span class="error age-error">
+                                {% if ageMessage %}
+                                    {{errorMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <select name="gender" id="gender">
+                                <option value="" disabled selected>Choose Gender</option>
+                                <option value="male">male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <span class="error geder-error">
+                                {% if genderMessage %}
+                                    {{genderMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="wrapper">
+                            <input type="text" value="{{data.education}}" name="education" id="education" autocomplete="off" placeholder="Education" required>
+                            <span class="error eudcation-error">
+                                {% if eudcationMessage %}
+                                    {{eudcationMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <input type="text" value="{{data.experience}}" name="experience" id="experience" autocomplete="off" placeholder="Experience" required>
+                            <span class="error experience-error">
+                                {% if experienceMessage %}
+                                    {{experienceMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="wrapper">
+                            <input type="text" value="{{data.profession}}" name="profession" id="profession" autocomplete="off" placeholder="Profession" required>
+                            <span class="error profession-error">
+                                {% if professionMessage %}
+                                    {{professionMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <input type="text" value="{{data.currentCompany}}" name="currentCompany" id="currentCompany" autocomplete="off" placeholder="Current Working Company" required>
+                            <span class="error currentCompany-error">
+                                {% if currentCompanyMessage %}
+                                    {{currentCompanyMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="wrapper">
+                            <input type="file" name="image" id="image" required>
+                            <span class="error image-error">
+                                {% if imageMessage %}
+                                    {{imageMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width: 130%;">
+                        <div class="wrapper">
+                            <input type="password" value="{{data.password}}" name="password" id="password" autocomplete="off" placeholder="Password" required>
+                            <span class="error password-error">
+                                {% if passwordMessage %}
+                                    {{passwordMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="wrapper">
+                            <input type="password" value="{{data.confirm}}" name="confirm" id="confirm" autocomplete="off" placeholder="Confirm Password" required>
+                            <span class="error confirm-error">
+                                {% if confirmMessage %}
+                                    {{confirmMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-data" style="width : 130%">
+                        <div class="wrapper">
+                            <textarea name="skills" id="skills" placeholder="Skills" rows="2">{% if data.skills %}{{data.skills}}{% endif %}</textarea>
+                            <span class="error skills-error">
+                                {% if skillsMessage %}
+                                    {{skillsMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-data" style="width : 130%">
+                        <div class="wrapper">
+                            <textarea name="description" id="description" placeholder="Description" rows="2">{% if data.description %}{{data.description}}{% endif %}</textarea>
+                            <span class="error skills-error">
+                                {% if descriptionMessage %}
+                                    {{descriptionMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    <input type="submit" value="Sign UP" class="submitBtn">
+                </form>
+                <p id="error">
+                    {% if errorMessage %}
+                        {{errorMessage}}
+                    {% endif %}
+                </p>
+            </div>
+    
+            <div class="image">
+                <img class="img" src="./../static/images//employee.png" alt="Employee">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="./../static/js/companyRegister.js"></script>
+{% endblock %}

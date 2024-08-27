@@ -24,7 +24,7 @@
 body 
 {
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .profile 
@@ -43,6 +43,8 @@ body
     font-weight: 500;
     font-size: var(--textSize);
     box-shadow: 0px 0px 10px 1px var(--textColor);
+    position: sticky;
+    top: 0;
 }
 
 .navigation-bar, .navigation-bar ul

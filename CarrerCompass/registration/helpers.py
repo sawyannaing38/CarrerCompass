@@ -56,4 +56,3 @@ def sendEmail(subject, body, to_email):
         server.send_message(msg)
 
         server.quit()
-

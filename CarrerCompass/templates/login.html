@@ -14,16 +14,16 @@
     <div class="parent">
         <div class="container">
             <div class="information">
-                <h1>Login here for Your Dream Employees</h1>
-                <p>Doesn't  have an account?<span><a href="{% url 'company_register' %}">Sign Up Here</a></span></p>
-                <form action="{% url 'company_login' %}" method="post">
+                <h1>Login here</h1>
+                <p>Doesn't  have an account?<span><a href="{% url 'register_view' %}">Sign Up Here</a></span></p>
+                <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     <div class="form-data">
                         <div class="wrapper">
-                            <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required value="{{data.companyName}}">
+                            <input type="text" name="username" id="username" placeholder="Username" autofocus required value="{{data.companyName}}">
                             <span class="name-error error">
-                                {% if companyNameMessage %}
-                                    {{companyNameMessage}}
+                                {% if usernameMessage %}
+                                    {{usernameMessage}}
                                 {% endif %}
                             </span>
                         </div>

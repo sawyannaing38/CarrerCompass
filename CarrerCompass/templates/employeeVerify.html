@@ -8,7 +8,7 @@
     <div class="container">
         <div class="wrapper">
             <h1>Enter Verification Code</h1>
-            <form action="{% url 'verify_company' %}" method="post">
+            <form action="{% url 'verify_employee' %}" method="post">
                 {% csrf_token %}
                 <div>
                     <input type="number" name="verification" id="verification" autocomplete="off" placeholder="XXXXX" min="11111" max="99999">
@@ -20,7 +20,6 @@
                 </div>
                 <input type="submit" value="Verify" class="submitBtn">
             </form>
-            
         </div>
     </div>
 {% endblock %}
