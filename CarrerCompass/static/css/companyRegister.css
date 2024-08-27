@@ -124,6 +124,14 @@ textarea
     border: none;
     border-radius: 15px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.submitBtn:hover 
+{
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+    color: var(--textColor);
 }
 
 .information 

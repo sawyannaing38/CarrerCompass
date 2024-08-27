@@ -10,14 +10,15 @@ setTimeout(() => {
 }, 10)
 
 // Add submit event
-form.addEventListener("submit", function(event)
-{
-    event.preventDefault();
+// form.addEventListener("submit", function(event)
+// {
+//     event.preventDefault();
 
-    // Check each field is empty or not
-    // If empty (warn the user)
-    // check file extension is jpg jpeg or png
-    // check password between 6 and 8 character, at least one uppercase, one number and one special character
-    // check password == confirm
+//     // Check each field is empty or not
+//     // If empty (warn the user)
+//     // check file extension is jpg jpeg or png
+//     // check password between 6 and 8 character, at least one uppercase, one number and one special character
+//     // check password == confirm
+//     form.submit()
 
-})
+// })

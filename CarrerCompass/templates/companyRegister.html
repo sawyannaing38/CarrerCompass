@@ -16,46 +16,78 @@
             <div class="information">
                 <h1>Sign Up here for Your Dream Employees</h1>
                 <p>Already have an account?<span>Login Here</span></p>
-                <form action="#">
+                <form action="{% url 'company_register' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-data">
                         <div class="wrapper">
-                            <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required>
-                            <span class="name-error error"></span>
+                            <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required value="{{data.companyName}}">
+                            <span class="name-error error">
+                                {% if companyNameMessage %}
+                                    {{companyNameMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                         
                         <div class="wrapper">
-                            <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required>
-                            <span class="location-error error"></span>
+                            <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required value="{{data.location}}">
+                            <span class="location-error error">
+                                {% if locationMessage %}
+                                    {{locationMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     <div class="form-data">
                         <div class="wrapper">
-                            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required>
-                            <span class="email-error"></span>
+                            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required value="{{data.email}}">
+                            <span class="email-error">
+                                {% if emailMessage %}
+                                    {{emailMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                         <div class="wrapper">
-                            <input type="file" name="image" id="image" multiple>
-                            <span class="file-error error"></span>
+                            <input type="file" name="image" id="image">
+                            <span class="file-error error">
+                                {% if imageMessage %}
+                                    {{imageMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     <div class="form-data">
                         <div class="wrapper">
-                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
-                            <span class="password-error error"></span>
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required value="{{data.password}}">
+                            <span class="password-error error">
+                                {% if passwordMessage %}
+                                    {{passwordMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                         <div class="wrapper">
-                            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" autocomplete="off" required>
-                            <span class="confirm-error error"></span>
+                            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" autocomplete="off" required value="{{data.confirm}}">
+                            <span class="confirm-error error">
+                                {% if confirmMessage %}
+                                    {{confirmMessage}}
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     <div class="wrapper">
-                        <textarea name="description" id="description" placeholder="Description" rows="3"></textarea>
-                        <span class="description-error error"></span>
+                        <textarea name="description" id="description" placeholder="Description" rows="3">{% if data.description %}{{data.description}}{% endif %}</textarea>
+                        <span class="description-error error">
+                            {% if descriptionMessage %}
+                                {{descriptionMessage}}
+                            {% endif %}
+                        </span>
                     </div>
-                    <input type="submit" value="Sign Up" class="submitBtn">
+                    <input type="submit" value="Sign UP" class="submitBtn">
                 </form>
-
-                <p id="error"></p>
+                <p id="error">
+                    {% if errorMessage %}
+                        {{errorMessage}}
+                    {% endif %}
+                </p>
             </div>
     
             <div class="image">

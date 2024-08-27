@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="wrapper">
+            <h1>Enter Verification We jsut Sent to You!</h1>
+            <form action="{% url 'verify_company' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <input type="number" name="Verification" id="verification" autocomplete="off" placeholder="XXXXX">
+                    <span class="error">
+                        {% if message %}
+                            {{message}}
+                        {% endif %}
+                    </span>
+                </div>
+                <input type="submit" value="Verify" class="submitBtn">
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

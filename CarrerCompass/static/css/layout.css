@@ -27,6 +27,15 @@ body
     overflow: hidden;
 }
 
+.profile 
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--textColor);
+}
 .header 
 {
     background-color: var(--backColor);
@@ -97,13 +106,22 @@ body
 
 .navigation-bar ul:nth-child(3) li 
 {
-    margin: 0px 15px;
+    margin: 0px 5px;
+}
+
+.navigation-bar ul:nth-child(3) li:hover a 
+{
+    color: var(--styleColor);
+    transform: translateY(-2px);
 }
 
 .navigation-bar ul:nth-child(3) li a 
 {
     padding: 5px 10px;
+    display: block;
+    transition: all 0.3s linear;
 }
+
 
 .signin 
 {

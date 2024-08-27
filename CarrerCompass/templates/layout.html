@@ -29,12 +29,17 @@
             </ul>
             <ul>
                 {% if type == "employee" %}
-                    <li><a href="#">{{employee.user.username}}</a></li>
                     <li><a href="#">Logout</a></li>
+                    <li><a href="#">
+                        <img src="{{user.employee.image.url}}" alt="{{user.username}}" class="profile">
+                    </a></li>
                 {% elif type == "company" %}
-                    <li><a href="#">{{company.user.username}}</a></li>
                     <li><a href="#">Post</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#">Your Offers</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="#">
+                        <img src="{{user.company.image.url}}" alt="{{user.username}}" class="profile">
+                    </a></li>
                 {% else %}
                     <li><a href="{% url 'register_view' %}" class="register">Register</a></li>
                     <li><a href="#" class="signin">Sign In</a></li>

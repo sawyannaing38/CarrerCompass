@@ -7,7 +7,7 @@ class User(AbstractUser):
     pass 
 
 class Company(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="comapny")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="company")
     image = models.ImageField(upload_to='images/')
     location = models.TextField()
     description = models.TextField()  
