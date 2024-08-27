@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function()
 })
 
 
-function showTypingEffect(obj, texts)
+export function showTypingEffect(obj, texts)
 {   
     obj.textContent = "";
     const words = texts.split(" ");

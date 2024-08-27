@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
+from django.core.files.storage import default_storage
 from django.db import IntegrityError
 from django.urls import reverse
 from .models import User, Employee, Company
@@ -121,9 +122,13 @@ def company_register(request):
                 "description" : description
             }
         })
+    
+    # Storing image
+    img_path = default_storage.save(f"images/{image.name}", image)
     # Try to create a user
     try:
-        user = User.objects.create_user(username=companyName, password=password, email=email)
+        user = User(username=companyName, email=email)
+        user.set_password(password)
 
     # Catch IntegrityError
     except IntegrityError:
@@ -142,17 +147,17 @@ def company_register(request):
     
     # If error doesn't happen
     else:
-        
+    
         # Generating verification code
         verificationCode = randint(11111, 99999)
 
         # Saving the data
         request.session["verificationCode"] = verificationCode
-        request.session["data"] = {
+        request.session["companyData"] = {
             "companyName" : companyName,
             "location" : location,
             "email" : email,
-            "image" : image,
+            "image" : img_path,
             "password" : password,
             "confirm" : confirm,
             "description" : description
@@ -178,11 +183,65 @@ def verify_company(request):
     # Getting code
     verificationCode = request.POST.get("verification")
 
+    data = request.session["companyData"]
+
     if int(verificationCode) == request.session["verificationCode"]:
-        user = User.objects.create_user(username=request.session["companyName"], password=request.session["data"]["password"], email=request.session["data"]["email"])
+        user = User.objects.create_user(username=data["companyName"], password=data["password"], email=data["email"])
         user.save()
 
-        company = Company(user=user, image=request.session["data"]["image"], location=request.session["data"]["location"], description=request.session["data"]["description"])
+        company = Company(user=user, image=data["image"], location=data["location"], description=data["description"])
         company.save()
         login(request, user)
-        return HttpResponseRedirect(reverse("register_index"))
+        return HttpResponseRedirect(reverse("index_registration"))
+    
+    return render(request, "verify.html", {
+        "message" : "Invalid Verification Code"
+    })
+
+# For Login
+def login_view(request):
+    if not request.user.is_authenticated:
+        return render(request, "chooseLogin.html")
+    return HttpResponseRedirect(reverse("index_registration"))
+    
+# For Company login
+def company_login(request):
+    if request.method == "GET":
+        return render(request, "companyLogin.html")
+    
+    # For get method
+    username = request.POST.get("companyName")
+    password = request.POST.get("password")
+
+    isValid = True
+    companyNameMessage = ""
+    passwordMessage = ""
+
+    if not username:
+        companyNameMessage = "Missing Company Name"
+        isValid = False 
+    
+    if not password:
+        passwordMessage = "Missing Password"
+        isValid = False 
+    
+    if not isValid:
+        return render(request, "companyLogin.html", {
+            "companyNameMessage" : companyNameMessage,
+            "passwordMessage" : passwordMessage,
+            "data" : 
+            {
+                "companyName" : username,
+                "password" : password
+            }
+        })
+    
+    user = authenticate(request, username=username, password=password)
+
+    if user:
+        login(request, user)
+        return HttpResponseRedirect(reverse("index_registration"))
+    
+    return render(request, "companyLogin.html", {
+        "message" : "Invalid Username or Password"
+    })

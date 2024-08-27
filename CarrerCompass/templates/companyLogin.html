@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Company Register
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/companyRegister.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="parent">
+        <div class="container">
+            <div class="information">
+                <h1>Login here for Your Dream Employees</h1>
+                <p>Doesn't  have an account?<span><a href="{% url 'company_register' %}">Sign Up Here</a></span></p>
+                <form action="{% url 'company_login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-data">
+                        <div class="wrapper">
+                            <input type="text" name="companyName" id="companyName" placeholder="Company Name" autofocus required value="{{data.companyName}}">
+                            <span class="name-error error">
+                                {% if companyNameMessage %}
+                                    {{companyNameMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        
+                        <div class="wrapper">
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required value="{{data.password}}">
+                            <span class="location-error error">
+                                {% if passwordMessage %}
+                                    {{passwordMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    <input type="submit" value="Login" class="submitBtn">
+
+                    <p id="error">
+                        {% if message %}
+                            {{message}}
+                        {% endif %}
+                    </p>
+                </form>
+            </div>
+    
+            <div class="image">
+                <img class="img" src="./../static/images//company.png" alt="Company">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/companyRegister.js' %}"></script>
+{% endblock %}

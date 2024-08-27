@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/verify.css' %}">
 {% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="wrapper">
-            <h1>Enter Verification We jsut Sent to You!</h1>
+            <h1>Enter Verification Code</h1>
             <form action="{% url 'verify_company' %}" method="post">
                 {% csrf_token %}
                 <div>
-                    <input type="number" name="Verification" id="verification" autocomplete="off" placeholder="XXXXX">
+                    <input type="number" name="verification" id="verification" autocomplete="off" placeholder="XXXXX" min="11111" max="99999">
                     <span class="error">
                         {% if message %}
                             {{message}}
@@ -25,5 +25,5 @@
 {% endblock %}
 
 {% block js %}
-
+    <script src="{% static 'js/verify.js' %}"></script>
 {% endblock %}

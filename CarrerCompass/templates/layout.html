@@ -42,7 +42,7 @@
                     </a></li>
                 {% else %}
                     <li><a href="{% url 'register_view' %}" class="register">Register</a></li>
-                    <li><a href="#" class="signin">Sign In</a></li>
+                    <li><a href="{% url 'login' %}" class="signin">Sign In</a></li>
                 {% endif %}
             </ul>
         </nav>

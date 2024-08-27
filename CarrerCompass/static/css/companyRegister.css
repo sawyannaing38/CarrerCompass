@@ -74,8 +74,14 @@
 .information p span 
 {
     color: var(--styleColor);
+    margin: 0px 10px;
 }
 
+.information p span a 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+}
 form 
 {
     display: flex;
@@ -157,3 +163,4 @@ textarea
     color: red;
     font-family: var(--textFont);
 }
+
