@@ -12,7 +12,7 @@ from random import randint
 # For Registering
 def register_view(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("index_registration"))
+        return HttpResponseRedirect(reverse("index"))
     return render(request, "choose.html")
 
 # For Company Registering
