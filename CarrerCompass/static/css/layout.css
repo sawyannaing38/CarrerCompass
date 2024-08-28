@@ -45,6 +45,7 @@ body
     box-shadow: 0px 0px 10px 1px var(--textColor);
     position: sticky;
     top: 0;
+    z-index: 3;
 }
 
 .navigation-bar, .navigation-bar ul
