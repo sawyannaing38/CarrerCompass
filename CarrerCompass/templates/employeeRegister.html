@@ -169,7 +169,7 @@
             </div>
     
             <div class="image">
-                <img class="img" src="./../static/images//employee.png" alt="Employee">
+                <img class="img" src="{% static 'images/employee.png' %}" alt="Employee">
             </div>
 
         </div>
@@ -177,5 +177,5 @@
 {% endblock %}
 
 {% block js %}
-    <script src="./../static/js/companyRegister.js"></script>
+    <script src="{% static 'js/employeeRegister.js' %}" type="module"></script>
 {% endblock %}

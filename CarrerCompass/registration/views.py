@@ -9,24 +9,6 @@ from .helpers import validPassword, sendEmail
 from random import randint
 
 # Create your views here.
-def index(request):
-    if request.user.is_authenticated:
-        if hasattr(request.user, "company"):
-            type = "company"
-        
-        elif hasattr(request.user, "employee"):
-            type = "employee"
-        
-        else:
-            type = "company"
-    else:
-        type = "guest"
-    
-    return render(request, "index.html", {
-        "type" : type,
-        "user" : request.user
-    })
-
 # For Registering
 def register_view(request):
     if request.user.is_authenticated:
@@ -172,7 +154,7 @@ def company_register(request):
 # For Loggout Out
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index_registration"))
+    return HttpResponseRedirect(reverse("index"))
 
 # For Verification
 def verify_company(request):
@@ -210,7 +192,7 @@ def verify_company(request):
         company = Company(user=user, image=data["image"], location=data["location"], description=data["description"])
         company.save()
         login(request, user)
-        return HttpResponseRedirect(reverse("index_registration"))
+        return HttpResponseRedirect(reverse("index"))
     
     return render(request, "verify.html", {
         "message" : "Invalid Verification Code"
@@ -221,7 +203,7 @@ def login_view(request):
     if request.method == "GET":
         if not request.user.is_authenticated:
             return render(request, "login.html")
-        return HttpResponseRedirect(reverse("index_registration"))
+        return HttpResponseRedirect(reverse("index"))
     
     # For get method
     username = request.POST.get("username")
@@ -254,7 +236,7 @@ def login_view(request):
 
     if user:
         login(request, user)
-        return HttpResponseRedirect(reverse("index_registration"))
+        return HttpResponseRedirect(reverse("index"))
     
     return render(request, "login.html", {
         "message" : "Invalid Username or Password"
@@ -266,7 +248,7 @@ def employee_register(request):
 
     if request.method == "GET":
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse("index_registration"))
+            return HttpResponseRedirect(reverse("index"))
         return render(request, "employeeRegister.html")
     
     # Get method
@@ -523,7 +505,7 @@ def verify_employee(request):
 
         employee.save()
         login(request, user)
-        return HttpResponseRedirect(reverse("index_registration"))
+        return HttpResponseRedirect(reverse("index"))
     
     return render(request, "employeeVerify.html", {
         "message" : "Invalid Verification Code"

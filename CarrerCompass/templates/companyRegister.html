@@ -91,7 +91,7 @@
             </div>
     
             <div class="image">
-                <img class="img" src="./../static/images//company.png" alt="Company">
+                <img class="img" src="{% static 'images/company.png' %}" alt="Company">
             </div>
 
         </div>
@@ -99,5 +99,5 @@
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'js/companyRegister.js' %}"></script>
+    <script src="{% static 'js/companyRegister.js' %}" type="module"></script>
 {% endblock %}

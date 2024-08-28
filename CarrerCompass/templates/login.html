@@ -30,7 +30,7 @@
                         
                         <div class="wrapper">
                             <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required value="{{data.password}}">
-                            <span class="location-error error">
+                            <span class="password-error error">
                                 {% if passwordMessage %}
                                     {{passwordMessage}}
                                 {% endif %}
@@ -48,7 +48,7 @@
             </div>
     
             <div class="image">
-                <img class="img" src="./../static/images//company.png" alt="Company">
+                <img class="img" src="{% static 'images/company.png' %}" alt="Company">
             </div>
 
         </div>
@@ -56,5 +56,5 @@
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'js/companyRegister.js' %}"></script>
+    <script src="{% static 'js/login.js' %}" type="module"></script>
 {% endblock %}
