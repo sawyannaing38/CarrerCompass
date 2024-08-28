@@ -1,4 +1,4 @@
-import { moveEffect } from "./comon.js";
+import { moveEffect } from "./common.js";
 
 const form = document.querySelector("form");
 

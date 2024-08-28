@@ -1,5 +1,5 @@
-"use strict";
-import { showTypingEffect } from "./comon.js";
+import { showTypingEffect } from "./common.js";
+
 const infos = document.querySelectorAll(".info");
 const descriptions = ["I am Company here to hire", "I am Employee here to apply"]
 
