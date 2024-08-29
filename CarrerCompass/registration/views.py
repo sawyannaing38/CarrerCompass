@@ -178,14 +178,14 @@ def verify_company(request):
             "message" : "Invalid Verify Code"
         })
     else:
-        if 11111 <= verificationCode <= 99999:
+        if not 11111 <= verificationCode <= 99999:
             return render(request, "verify.html", {
                 "message" : "Invalid Verification code"
         })
-
     data = request.session["companyData"]
 
-    if int(verificationCode) == request.session["verificationCode"]:
+
+    if verificationCode == request.session["verificationCode"]:
         user = User.objects.create_user(username=data["companyName"], password=data["password"], email=data["email"])
         user.save()
 

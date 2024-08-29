@@ -23,11 +23,12 @@ function containUpper(password)
 {
     for (const char of password)
     {
-        if ('A' <= char <= 'Z')
+        if ('A' <= char && char <= 'Z')
         {
             return true;
         }
     }
+
     return false;
 }
 
@@ -38,7 +39,7 @@ function containNumber(password)
         char = Number(char)
 
         if (char)
-        {
+        {   
             return true;
         }
     }
@@ -50,7 +51,7 @@ function containSpecial(password)
     for (const char of password)
     {
         if ((char == '@') || (char == '#') || (char == '!') || (char == '*' ) || (char == '$'))
-        {
+        {   
             return true;
         }
     }

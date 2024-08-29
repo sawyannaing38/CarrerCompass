@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Post Job Offer
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div>
+            <h1 class="heading">  </h1>
+            <form action="{% url 'post' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <div class="parent">
+                        <div class="wrapper">
+                            <input type="text" value="{{position}}" name="position" id="position" autocomplete="off" placeholder="Position" required>
+                            <span class="position-error">
+                                {% if positionMessage %}
+                                    {{positionMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+        
+                        <div class="wrapper">
+                            <input type="number" value="{{salary}}" name="salary" id="salary" autocomplete="off" placeholder="Salary" required>
+                            <span class="salary-error">
+                                {% if salaryMessage %}
+                                    {{salaryMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+        
+                        <div class="wrapper">
+                            <input type="text" value="{{location}}" name="location" id="location" autocomplete="off" placeholder="Location" required>
+                            <span class="location-error">
+                                {% if locationMessage %}
+                                    {{locationMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+        
+                        <div class="wrapper">
+                            <input type="number" value="{{workingTime}}" name="workingTime" id="workingTime" placeholder="Working Hour" autocomplete="off" required>
+                            <span class="workingTime-error">
+                                {% if workingTimeMessage %}
+                                    {{workingTimeMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+        
+                        <div class="wrapper">
+                            <input type="text" value="{{field}}" name="field" id="field" autocomplete="off" placeholder="Field of Job(Eg. IT)" required>
+                            <span class="field-error">
+                                {% if fieldMessage %}
+                                    {{fieldMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="wrapper">
+                            <button class="submitBtn">Offer</button>
+                        </div>
+                    </div>
+                    
+                    <div class="parent">
+                        <div class="wrapper">
+                            <textarea name="requirement" id="requirement" placeholder="requirement" autocomplete="off" required>{{requirement}}</textarea>
+                            <span class="requirement-error">
+                                {% if requirementMessage %}
+                                    {{requirementMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+        
+                        <div class="wrapper">
+                            <textarea name="benefit" id="benefit" placeholder="Benefits" autocomplete="off" required>{{benefit}}</textarea>
+                            <span class="benefit-error">
+                                {% if benefitMessage %}
+                                    {{benefitMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/post.js' %}" type="module"></script>
+{% endblock %}

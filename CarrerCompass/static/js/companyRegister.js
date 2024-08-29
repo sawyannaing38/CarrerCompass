@@ -56,6 +56,7 @@ form.addEventListener("submit", function(event)
     // Check valid password or not
     if ((document.querySelector("#password").value) && (!isValidPassword(document.querySelector("#password").value)))
     {
+        console.log(isValidPassword(document.querySelector("#password").value))
         document.querySelector(".password-error").textContent = "Invalid Password";
         isValid = false;
     }

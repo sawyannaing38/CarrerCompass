@@ -34,7 +34,7 @@
                         <img src="{{user.employee.image.url}}" alt="{{user.username}}" class="profile">
                     </a></li>
                 {% elif type == "company" %}
-                    <li><a href="#">Post</a></li>
+                    <li><a href="{% url 'post' %}">Post</a></li>
                     <li><a href="#">Your Offers</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     <li><a href="#">
