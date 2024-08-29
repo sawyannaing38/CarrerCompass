@@ -19,6 +19,7 @@ def index(request):
     else:
         type = "guest"
     
+    # Getting all the available jobs
     return render(request, "index.html", {
         "type" : type,
         "user" : request.user

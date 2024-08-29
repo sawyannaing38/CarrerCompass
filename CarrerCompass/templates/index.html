@@ -2,8 +2,24 @@
 {% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block main %}
+    <div id="particles-js">
+        <div class="container">
+            <h1>Connect with Everyone</h1>
+            <form action="#">
+                <input type="text" name="job" id="job" placeholder="Jobs" autocomplete="off" required>
+                <input type="text" name="location" id="location" placeholder="Location" autocomplete="off" required>
+                <button class="searchBtn">Search</button>
+            </form>
+            <p class="info">Over {{total}} jobs from different locations are available.</p>
+            <a href="#" class="exploreBtn">Explore Now</a>
+        </div>
+    </div>
+{% endblock %}
 
+{% block js %}
+    <script src="{% static 'js/particles.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 {% endblock %}
