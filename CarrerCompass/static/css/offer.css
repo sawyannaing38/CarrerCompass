@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+body 
+{
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--backColor);
+}
+
+h1 
+{
+    text-align: center;
+    font-family: var(--headingFont);
+    font-size: var(--largeSize);
+    font-weight: 400;
+    margin: 30px 0px;
+    color: var(--textColor);
+}
+
+.joboffer-list 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.job 
+{
+    width: 250px;
+    height: 250px;
+    color: var(--textColor);
+    border: 1px solid var(--styleColor);
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px var(--styleColor);
+}
+
+.job .info 
+{
+    margin: 10px 0px;
+}
+
+.job .info h4 
+{
+    font-family: var(--headingFont);
+    font-size: (var(--textSize));
+    color: var(--textColor);
+}
+
+.job .info span 
+{
+    font-family: var(--textFont);
+    color: var(--styleColor);
+    font-size: var(--smallSize);
+}
+
+p 
+{
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    margin: 15px 0px;
+}
+
+.button-list 
+{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 0px;
+}
+
+.btn 
+{
+    padding: 3px 5px;
+    font-family: var(--textFont);
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: var(--smallSize);
+    margin: 10px 0px;
+    transition: all 0.5s linear;
+}
+
+.closeBtn 
+{
+    background-color: var(--textColor);
+    color: var(--backColor);
+    border: 1px solid var(--textColor);
+    padding: 3px 20px;
+}
+
+.closeBtn:hover 
+{
+    background-color: transparent;
+    color: var(--textColor);
+    border: 1px solid var(--textColor);
+}
+
+.detailBtn 
+{
+    padding: 5px 10px;
+    background-color: transparent;
+    color: var(--textColor);
+    border: 1px solid var(--textColor);
+}
+
+.detailBtn:hover 
+{
+    background-color: var(--textColor);
+    color: var(--backColor);
+    border: 1px solid var(--textColor);
+}

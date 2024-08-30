@@ -40,7 +40,7 @@
                     <div class="form-data" style="width: 130%;">
                         <div class="wrapper">
                             <input type="email" value="{{data.email}}" name="email" id="email" autocomplete="off" placeholder="Email" required>
-                            <span class="error">
+                            <span class="error email-error">
                                 {% if emailMessage %}
                                     {{emailMessage}}
                                 {% endif %}
@@ -63,7 +63,7 @@
                                 <option value="male">male</option>
                                 <option value="female">Female</option>
                             </select>
-                            <span class="error geder-error">
+                            <span class="error gender-error">
                                 {% if genderMessage %}
                                     {{genderMessage}}
                                 {% endif %}

@@ -5,7 +5,7 @@ const form = document.querySelector("form");
 moveEffect();
 
 // Validating form
-form.addEventListener("click", function(event)
+form.addEventListener("submit", function(event)
 {
     event.preventDefault();
 
@@ -42,9 +42,9 @@ form.addEventListener("click", function(event)
         isValid = false;
     }
 
-    if (!document.querySelector("#eudcation").value)
+    if (!document.querySelector("#education").value)
     {
-        document.querySelector(".eudcation-error").textContent = "Missing Education";
+        document.querySelector(".education-error").textContent = "Missing Education";
         isValid = false;
     }
 

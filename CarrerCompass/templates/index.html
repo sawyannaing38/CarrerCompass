@@ -17,9 +17,56 @@
             <a href="#" class="exploreBtn">Explore Now</a>
         </div>
     </div>
+    <div class="about-us">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim odio iste pariatur explicabo, ipsum in aliquid praesentium. Autem necessitatibus illo, pariatur alias quisquam tempore reiciendis voluptatibus voluptates deserunt voluptas libero!</p>
+    </div>
+    {% if jobs %}
+        <div class="job-offers">
+            <h2 class="job-offer-heading">Latest Job Offers</h2>
+            <div class="job-lists">
+                {% for job in jobs %}
+                    <div class="job">
+                        <h4 class="company-name">{{job.owner.user.username}}</h4>
+                        <div>
+                            <h5>Position</h5>
+                            <p>{{job.position}}</p>
+                        </div>
+                        <div>
+                            <h5>Salary</h5>
+                            <p>${{job.salary}}</p>
+                        </div>
+
+                        <div>
+                            <h5>Location</h5>
+                            <p>{{job.location}}</p>
+                        </div>
+                        <p>Posted {{job.text}} ago</p>
+                        <a href="{% url 'jobDetails' job.id %}" class="watchBtn">Watch Details</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        <div class="banner">
+            <img src="{% static 'images/logo.png' %}" alt="CareerCompass" class="logo-image">
+            <h1>CareerCompass</h1>
+        </div>
+        {% if jobFields %}
+            <h1 class="available-heading">Available Job Types</h1>
+            <ul class="jobfield-lists">
+              {% for jobField in jobFields %}
+                <li><a href="#">{{jobField.field}}</a></li>
+              {% endfor %}
+            </ul>
+        {% endif %}
+
+    </div>
 {% endblock %}
 
 {% block js %}
     <script src="{% static 'js/particles.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
 {% endblock %}

@@ -88,6 +88,12 @@ form.addEventListener("submit", function(event) {
         isValid = false;
     }
 
+    if (!document.querySelector("#description").value)
+    {
+        document.querySelector(".description-error").textContent = "Missing Description";
+        isValid = false;
+    }
+    
     if (!document.querySelector("#requirement").value)
     {
         document.querySelector(".requirement-error").textContent = "Missing Requirement";
@@ -97,6 +103,12 @@ form.addEventListener("submit", function(event) {
     if (!document.querySelector("#benefit").value)
     {
         document.querySelector(".benefit-error").textContent = "Missing Benefit";
+        isValid = false;
+    }
+
+    if (!document.querySelector("#field").value)
+    {
+        document.querySelector(".field-error").textContent = "Missing Field";
         isValid = false;
     }
 

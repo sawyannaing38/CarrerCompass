@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+.container 
+{
+    width: 80%;
+    margin: 10px auto;
+}
+
+.container .job-details
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container .job-details .details
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px 0px;
+}
+
+.company 
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+}
+
+.company img 
+{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.container .job-details .details span 
+{
+    color: var(--styleColor);
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    font-weight: 500;
+    margin: 5px 0px;
+}
+
+.name 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    font-size: var(--largeSize);
+    margin: 20px 0px;
+}
+
+.working-time h4 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    font-size: var(--mediumSize);
+    margin: 5px 0px;
+}
+
+.working-time 
+{
+    margin: 10px 0px;
+}
+
+.guest-alert 
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    font-size: var(--mediumSize);
+    margin: 10px 0px;
+    font-weight: 300;
+}
+
+.guest-alert a 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+    transition: all 0.5s linear;
+}
+
+.guest-alert a:hover 
+{
+    color: var(--textColor);
+    text-decoration: underline;
+}
+
+.job-infos 
+{
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.job-infos > div.info
+{
+    width: 30%;
+    border: 1px solid var(--textColor);
+    border-radius: 15px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 2s linear;
+}
+
+
+.job-infos > div > h3 
+{
+    padding: 15px 0px;
+    text-align: center;
+    border-bottom: 1px solid var(--textColor);
+    box-shadow: 0px 1px 10px 0px var(--textColor);
+    border-radius: 15px 15px 0px 0px;
+    font-family: var(--headingFont);
+    color: var(--styleColor);
+}
+
+.job-infos > div > pre
+{
+    padding: 20px 40px;
+    font-family: var(--textFont);
+    font-size: var(--smallSize);
+    color: rgba(255, 255, 255, 0.7)
+}
+
+.details > div > h4 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    font-size: var(--smallSize);
+    margin: 5px 0px;
+}
+
+.details > div > span 
+{
+    font-size: var(--smallSize);
+}
+
+.benefit 
+{
+    transition-delay: 1s;
+}
+
+.requirement 
+{
+    transition-delay: 2s;
+}
+
+button 
+{
+    border: 1px solid var(--styleColor);
+    border-radius: 15px;
+    padding: 5px 20px;
+    color: var(--styleColor);
+    background-color: var(--backColor);
+    cursor: pointer;
+    transition: all 0.5s linear;
+    margin: 20px 0px;
+}
+
+button:hover 
+{
+    background-color: var(--styleColor);
+    color: var(--backColor);
+    border: 1px solid var(--textColor);
+}
+
+.apply-confirm
+{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--textColor);
+    color: var(--backColor);
+    font-family: var(--headingFont);
+    border-radius: 30px;
+    padding: 0px 20px;
+}
+
+.apply-confirm h3
+{
+    margin: 20px 0px;
+}
+
+.btn 
+{
+    border: 1px solid var(--backColor);
+    border-radius: 20px;
+    color: var(--backColor);
+    padding: 5px 20px;
+    margin-right: 20px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: all 0.3s linear;
+}
+
+.btn:hover 
+{
+    border-color: var(--styleColor);
+}

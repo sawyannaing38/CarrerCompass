@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    {{job.onwer.user.username}}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/job.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="job-details">
+            <div class="company">
+                <img src="{{job.owner.image.url}}" alt="{{job.owner.user.username}}">
+                <h2 class="name">{{job.owner.user.username}}</h2>
+            </div>
+            <div class="details">
+                <div>
+                    <h4>Position</h4>
+                    <span>{{job.position}} Position</span>
+                </div>
+                <div>
+                    <h4>Salary</h4>
+                    <span>${{job.salary}} per year</span>
+                </div>
+                <div>
+                    <h4>Location</h4>
+                    <span>{{job.location}}</span>
+                </div>
+                <div>
+                    <h4>Working Hour</h4>
+                    <span>{{job.workingTime}} hours of work per day</span>
+                </div>
+            </div>
+        </div>
+        {% if type == "guest" %}
+            <p class="guest-alert">You need to login in order to apply this <a href="{% url 'login' %}">Login Here</a></p>
+        {% elif type == "employee" %}
+            {% if alreadyApplied %}
+                <button>
+                    Applied
+                </button>
+            {% else %}
+                <button class="applyBtn">
+                    Apply
+                </button>
+                <div class="blur-container"></div>
+                <div class="apply-confirm">
+                    <h3>Are you sure you want to apply this job.</h3>
+                    <a href="#" class="confirm btn">Yes</a>
+                    <button class="reject btn">No</button>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="job-infos">
+        <div class="description info">
+            <h3>Description</h3>
+            <pre>{{job.description}}</pre>
+        </div>
+
+        <div class="benefit info">
+            <h3>Benefits</h3>
+            <pre>{{job.benefit}}</pre>
+        </div>
+
+        <div class="requirement info">
+            <h3>Requirements</h3>
+            <pre>{{job.requirement}}</pre>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/job.js' %}"></script>
+{% endblock %}

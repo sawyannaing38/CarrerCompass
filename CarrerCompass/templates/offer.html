@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/offer.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% if jobs %}
+        <h1>Your Job Offers</h1>
+        <div class="joboffer-list">
+            {% for job in jobs %}
+                <div class="job">
+                    <div class="info">
+                        <h4>Position</h4>
+                        <span>{{job.position}}</span>
+                    </div>
+                    <div class="info">
+                        <h4>Salary</h4>
+                        <span>${{job.salary}} per year</span>
+                    </div>
+                    <p>Posted {{job.text}} ago</p>
+
+                    <div class="button-list">
+                        <a href="#" class="closeBtn btn">Close</a>
+                        {% if job.applyCount == 0 %}
+                            <p>Nobody Applied Yet.</p>
+                        {% else %}
+                            <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You don't have any job offer.</p>
+        <a href="{% url 'post' %}">Post Some Here.</a>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

@@ -105,10 +105,12 @@ def company_register(request):
             }
         })
     
-    # Try to create a user
+    # Check that username already exist or not
     try:
-        user = User(username=companyName, email=email)
-        user.set_password(password)
+        usernames = User.objects.values("username")
+
+        if companyName in usernames:
+            raise IntegrityError
 
     # Catch IntegrityError
     except IntegrityError:
@@ -399,10 +401,12 @@ def employee_register(request):
             }
         })
 
-    # try to create a user
+    # Check username already exists or not
     try:
-        user = User(username=username, email=email)
-        user.set_password(password)
+        usernames = User.objects.values("username")
+
+        if username in usernames:
+            raise IntegrityError
     
     except IntegrityError:
         return render(request, "employeeRegister.html",{
@@ -487,7 +491,7 @@ def verify_employee(request):
 
         user = User.objects.create_user(username=data["username"], password=data["password"], email=data["email"])
         user.save()
-
+        
         # Creating Employee
         employee = Employee(
             user=user,

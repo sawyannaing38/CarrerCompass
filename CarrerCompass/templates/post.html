@@ -18,8 +18,10 @@
                 {% csrf_token %}
                 <div>
                     <div class="parent">
-                        <div class="wrapper">
-                            <input type="text" value="{{position}}" name="position" id="position" autocomplete="off" placeholder="Position" required>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <input type="text" value="{{position}}" name="position" id="position" autocomplete="off" placeholder="Position" required>
+                            </div>
                             <span class="position-error">
                                 {% if positionMessage %}
                                     {{positionMessage}}
@@ -27,17 +29,23 @@
                             </span>
                         </div>
         
-                        <div class="wrapper">
-                            <input type="number" value="{{salary}}" name="salary" id="salary" autocomplete="off" placeholder="Salary" required>
+                       <div class="wrapper-container">
+                            <div class="wrapper">
+                                <input type="number" value="{{salary}}" name="salary" id="salary" autocomplete="off" placeholder="Salary" required>
+                                
+                            </div>
                             <span class="salary-error">
                                 {% if salaryMessage %}
                                     {{salaryMessage}}
                                 {% endif %}
                             </span>
-                        </div>
+                       </div>
         
-                        <div class="wrapper">
-                            <input type="text" value="{{location}}" name="location" id="location" autocomplete="off" placeholder="Location" required>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <input type="text" value="{{location}}" name="location" id="location" autocomplete="off" placeholder="Location" required>
+                                
+                            </div>
                             <span class="location-error">
                                 {% if locationMessage %}
                                     {{locationMessage}}
@@ -45,8 +53,11 @@
                             </span>
                         </div>
         
-                        <div class="wrapper">
-                            <input type="number" value="{{workingTime}}" name="workingTime" id="workingTime" placeholder="Working Hour" autocomplete="off" required>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <input type="number" value="{{workingTime}}" name="workingTime" id="workingTime" placeholder="Working Hour" autocomplete="off" required>
+                                
+                            </div>
                             <span class="workingTime-error">
                                 {% if workingTimeMessage %}
                                     {{workingTimeMessage}}
@@ -54,22 +65,40 @@
                             </span>
                         </div>
         
-                        <div class="wrapper">
-                            <input type="text" value="{{field}}" name="field" id="field" autocomplete="off" placeholder="Field of Job(Eg. IT)" required>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <input type="text" value="{{field}}" name="field" id="field" autocomplete="off" placeholder="Field of Job(Eg. IT)" required>
+                                
+                            </div>
                             <span class="field-error">
                                 {% if fieldMessage %}
                                     {{fieldMessage}}
                                 {% endif %}
                             </span>
                         </div>
+
                         <div class="wrapper">
                             <button class="submitBtn">Offer</button>
                         </div>
                     </div>
                     
                     <div class="parent">
-                        <div class="wrapper">
-                            <textarea name="requirement" id="requirement" placeholder="requirement" autocomplete="off" required>{{requirement}}</textarea>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <textarea name="description" id="description" placeholder="Description" autocomplete="off" required>{{description}}</textarea>
+                                
+                            </div>
+                            <span class="description-error">
+                                {% if descriptionMessage %}
+                                    {{descriptionMessage}}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <textarea name="requirement" id="requirement" placeholder="requirement" autocomplete="off" required>{{requirement}}</textarea>
+                                
+                            </div>
                             <span class="requirement-error">
                                 {% if requirementMessage %}
                                     {{requirementMessage}}
@@ -77,14 +106,19 @@
                             </span>
                         </div>
         
-                        <div class="wrapper">
-                            <textarea name="benefit" id="benefit" placeholder="Benefits" autocomplete="off" required>{{benefit}}</textarea>
+                        <div class="wrapper-container">
+                            <div class="wrapper">
+                                <textarea name="benefit" id="benefit" placeholder="Benefits" autocomplete="off" required>{{benefit}}</textarea>
+                                
+                            </div>
                             <span class="benefit-error">
                                 {% if benefitMessage %}
                                     {{benefitMessage}}
                                 {% endif %}
                             </span>
                         </div>
+
+
                     </div>
                 </div>
             </form>

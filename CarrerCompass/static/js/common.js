@@ -88,3 +88,21 @@ export function isValidImage(imageName)
 
     return false;
 }
+
+// For toggleing show
+export function toggleShow(obj)
+{
+    const height = window.innerHeight;
+
+    const objHeight = obj.getBoundingClientRect().top;
+
+    if ((objHeight < height) && (objHeight > 0))
+    {
+        obj.classList.add("show");
+    }
+
+    else 
+    {
+        obj.classList.remove("show");
+    }
+}

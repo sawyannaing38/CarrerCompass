@@ -80,7 +80,7 @@ form > div
     width: var(--after-width, 0%);
     height: 2px;
     background-color: var(--styleColor);
-    bottom: 4px;
+    bottom: 0px;
     transition: all 1.5s linear;
     box-shadow: 0px 0px 10px 1px var(--styleColor);
 }
@@ -130,3 +130,12 @@ textarea
     color: var(--textColor);
 }
 
+[class*="-error"] {
+    /* Your styles here */
+    color: red;
+}
+
+.wrapper-container
+{
+    margin: 20px 0px;
+}

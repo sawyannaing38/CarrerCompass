@@ -21,12 +21,6 @@
     --smallSize : 14px;
 }
 
-body 
-{
-    height: 100vh;
-    overflow-x: hidden;
-}
-
 #particles-js
 {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)) , url(./../images/particle.jpg);
@@ -36,6 +30,9 @@ body
     height: 45vh;
     width: 100%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 
@@ -125,4 +122,169 @@ form input:focus
     transform: scale(1.04);
     color: var(--styleColor);
     border-color: var(--styleColor);
+}
+
+.about-us 
+{
+    height: calc(100vh - 45vh - 84px);
+    margin-bottom: 20px;
+}
+
+
+.job-offers h2
+{
+    text-align: center;
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    font-weight: 500;
+    font-size: var(--largeSize);
+    margin-bottom: 80px;
+}
+
+.job-offer-heading 
+{
+    opacity: 0;
+    transition: all 1s linear;
+}
+
+.job-lists 
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.job 
+{
+    width: 250px;
+    height: 320px;
+    border: 1px solid var(--styleColor);
+    border-radius: 15px;
+    padding: 10px 20px;
+    color: var(--textColor);
+    margin: 20px 0px;
+    box-shadow: 0px 0px 10px 1px var(--styleColor);
+    opacity: 0;
+    transition: all 1.5s linear;
+    transition-delay: 0.3s;
+}
+
+.job .company-name
+{
+    font-family: var(--headingFont);
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--textColor);
+    margin: 15px 0px;
+}
+
+.job h5 
+{
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    margin: 5px 0px;
+}
+
+.job > div > p
+{
+    opacity: 0.7;
+    font-family: var(--textFont);
+    font-size: var(--smallSize);
+}
+
+.job > div 
+{
+    margin: 10px 0px;
+}
+
+.job > p 
+{
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    margin: 20px 0px;  
+}
+
+.watchBtn 
+{
+    text-decoration: none;
+    background-color: var(--textColor);
+    color: var(--backColor);
+    font-family: var(--headingFont);
+    font-weight: 400;
+    font-size: var(--smallSizes);
+    border-radius: 20px;
+    padding: 5px 15px;
+    transition: all 0.5s linear;
+}
+
+.watchBtn:hover 
+{
+    color: var(--textColor);
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+}
+
+.show 
+{
+    opacity: 1;
+}
+
+.footer 
+{
+    box-shadow: 0px -1px 10px 1px var(--textColor);
+    text-align: center;
+}
+
+.footer .banner 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    margin: 15px 0px;
+}
+
+.footer .banner h1 
+{
+    color: var(--styleColor);
+    font-family: var(--headingFont);
+    font-size: var(--mediumSize);
+}
+
+.footer .available-heading
+{
+    margin: 20px 0px;
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    font-size: var(--largeSize);
+}
+
+.jobfield-lists
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    padding: 20px 0px;
+    gap: 10px;
+}
+
+.jobfield-lists li a 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    transition: all 0.5s linear;
+}
+
+.jobfield-lists li a:hover 
+{
+    color: var(--textColor);
 }
