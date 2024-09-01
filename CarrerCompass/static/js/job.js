@@ -1,3 +1,5 @@
+import {getCookie} from "./common.js"
+
 const descirption = document.querySelector(".description");
 const benefit = document.querySelector(".benefit");
 const requirement = document.querySelector(".requirement");
@@ -24,11 +26,39 @@ applyBtn.addEventListener("click", function()
     applyConfirmBox.style.display = "block";
 })
 
-confirmBtn.addEventListener("click", function()
-{
-    applyConfirmBox.style.display = "none";
+confirmBtn.addEventListener("click", async function()
+{   
+    const id = Number(applyBtn.dataset.id);
+
+    // fetch the createCandidate api
+    const url = `http://127.0.0.1:8000/api/createCandidate/${id}`;
+
+    try
+    {
+        const response = await fetch(url , {
+            "method" : "POST",
+            "headers" : 
+            {
+                "Content-Type" : "application/json",
+                "X-CSRFToken" : getCookie("csrftoken")
+            }
+        })
+
+        if (!response.ok)
+        {
+            console.log(response)
+        }
+    }
+
+    catch(error)
+    {
+        console.log(error)
+    }   
+
+    // Changing textContent
     applyBtn.textContent = "Applied";
     applyBtn.disabled = true;
+    applyConfirmBox.style.display = "none";
 })
 
 rejectBtn.addEventListener("click", function()

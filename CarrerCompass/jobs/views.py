@@ -181,12 +181,12 @@ def jobDetails(request, id):
         type = "employee"
 
         # Check that this user already applied this job
-        candidates = job.candidates.all()
-
-        for candidate in candidates:
-            if candidate == request.user.employee:
-                alreadyApplied = True
         alreadyApplied = False 
+        candidates = job.candidates.all()
+        
+        for candidate in candidates:
+            if candidate.appliedPerson == request.user.employee:
+                alreadyApplied = True
 
         return render(request, "job.html", {
             "type" : "employee",

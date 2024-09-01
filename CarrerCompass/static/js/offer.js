@@ -1,13 +1,12 @@
 import { toggleShow, getCookie } from "./common.js";
 
 const closeBtns = document.querySelectorAll(".closeBtn");
-const closeJobLists = document.querySelector(".close-jobs");
-const openJobLists = document.querySelector(".open-jobs");
-const body = document.querySelector("body");
 const headings = document.querySelectorAll("h1");
+const closeJobContainer = document.querySelector(".close-jobs");
+const openJobContainer = document.querySelector(".open-jobs");
 
-const closeJobs = closeJobLists?.querySelectorAll(".job");
-const openJobs = openJobLists?.querySelectorAll(".job");
+const closeJobs = closeJobContainer?.querySelectorAll(".job");
+const openJobs = openJobContainer?.querySelectorAll(".job");
 
 
 const windowHeight = window.innerHeight;
@@ -22,13 +21,13 @@ closeBtns.forEach(function(closeBtn) {
         confirmBox.style.display = "flex";
 
         // Making Change According to user Choice
-        closeJob(confirmBox.firstElementChild.children[1].firstElementChild, confirmBox.firstElementChild.children[1].children[1], confirmBox, closeBtn)
+        closeJob(confirmBox.firstElementChild.children[1].firstElementChild, confirmBox.firstElementChild.children[1].children[1], confirmBox)
     })
 })
 
 // Function for makeing changes according to user choice
-function closeJob(yes, no, obj, btn)
-{
+function closeJob(yes, no, obj)
+{   
     yes.addEventListener("click", async function() {
         const id = Number(this.dataset.id);
         const url = `http://127.0.0.1:8000/api/closeJob/${id}`;
@@ -53,31 +52,29 @@ function closeJob(yes, no, obj, btn)
 
             if (response.ok)
             {
-                // Remove the job from job offer and add to close job
+                // Remove the job from open container
                 const job = obj.previousElementSibling;
 
-                openJobLists.remove(job);
+                // Remove close btn from the job
+                job.querySelector(".closeBtn").remove();
 
-                console.log(job);
+                // Add the job to the close container
+                closeJobContainer.insertBefore(job, closeJobContainer.firstChild);
 
-                // Removing close btn from job
-                const buttonLists = job.querySelector(".button-list");
-                buttonLists.remove(buttonLists.querySelector(".closeBtn"));
+                toggleVisible(headings, openJobs, closeJobs);
 
-                // Removing confirm Container from opbjobs
-                openJobLists.remove(obj);
-                
-                closeJobLists.insertBefore(job, closeJobLists.firstElementChild);
+                // Remove the confirmBox
+                obj.remove();
 
-                // Check there is not more open job
-                if (openJobLists.children.length === 0)
+                // Check the openJob container is empty now
+                if (openJobContainer.childElementCount === 0)
                 {
-                    document.querySelector(".offer-heading").style.display = "none";
+                    // Hide the title
+                    headings[0].style.display = "none";
                 }
-                
             }
 
-            return;
+
         }
 
         catch(error)
@@ -87,8 +84,6 @@ function closeJob(yes, no, obj, btn)
 
         // Hide ojb
         obj.style.display = "none";
-        btn.textContent = "Closed";
-        btn.disabled = true;
     })
 
     no.addEventListener("click", function() {
@@ -99,45 +94,7 @@ function closeJob(yes, no, obj, btn)
 // Adding show class at the start if that element is visible
 document.addEventListener("DOMContentLoaded", function() 
 {
-    if (headings)
-    {
-        headings.forEach(function(heading)
-        {
-            const height = heading.getBoundingClientRect().top;
-
-            if (height < windowHeight && height > 0)
-            {
-                heading.classList.add("show");
-            }
-        })
-    }
-
-    if (openJobs)
-    {   
-        openJobs.forEach(function(openJob)
-        {
-            const height = openJob.getBoundingClientRect().top;
-
-            if (height < windowHeight && height > 0)
-            {
-                openJob.classList.add("show");
-            }
-        })
-    }
-
-    if (closeJobs)
-    {
-        closeJobs.forEach(function(clsoeJob)
-        {
-            const height = clsoeJob.getBoundingClientRect().top;
-
-            if (height < windowHeight && height > 0)
-            {
-                clsoeJob.classList.add("show");
-            }
-        })
-    }
-
+    toggleVisible(headings, openJobs, closeJobs);
 })
 
 // Adding scroll event
@@ -168,4 +125,46 @@ document.addEventListener("scroll", function()
     }
 })
 
+// Function for toggling show
+function toggleVisible(headings, openJobs, closeJobs)
+{
+    if (headings)
+    {
+        headings.forEach(function(heading)
+        {
+            const height = heading.getBoundingClientRect().top;
+
+            if (height < windowHeight && height > 0)
+            {
+                heading.classList.add("show");
+            }
+        })
+    }
+    
+    if (openJobs)
+    {   
+        openJobs.forEach(function(openJob)
+        {
+            const height = openJob.getBoundingClientRect().top;
+
+            if (height < windowHeight && height > 0)
+            {
+                openJob.classList.add("show");
+            }
+        })
+    }
+    
+    if (closeJobs)
+    {
+        closeJobs.forEach(function(clsoeJob)
+        {
+            const height = clsoeJob.getBoundingClientRect().top;
+
+            if (height < windowHeight && height > 0)
+            {
+                clsoeJob.classList.add("show");
+            }
+        })
+    }
+}
 
