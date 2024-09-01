@@ -106,3 +106,34 @@ export function toggleShow(obj)
         obj.classList.remove("show");
     }
 }
+
+// Function for getting cookie
+export function getCookie(name)
+{
+    let cookieValue = "";
+
+    // Check if cookies exist
+    if (document.cookie && document.cookie !== "")
+    {
+        // Split the cookie
+        const cookies = document.cookie.split(";");
+
+        // Check that cookies contain the desired name
+        for (const cookie of cookies)
+        {
+    
+            if (cookie.substring(0, name.length + 1) === (name + "="))
+            {
+                // Getting cookie after the equal sign
+                cookieValue = cookie.substring(name.length + 1)
+
+                // decoding url
+                cookieValue = decodeURIComponent(cookieValue);
+                return cookieValue;
+            }
+        }
+
+        return cookieValue;
+    }
+    return cookieValue;
+}

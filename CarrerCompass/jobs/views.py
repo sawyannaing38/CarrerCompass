@@ -21,7 +21,7 @@ def index(request):
         type = "guest"
     
     # Getting all the available jobs
-    jobs = Job.objects.filter(type="open")
+    jobs = Job.objects.filter(type="open").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
 
     # Getting time difference between job posted and now
     today = datetime.now()
@@ -36,7 +36,7 @@ def index(request):
         job.text = getPostTime(differenceTime)
 
     # Get all type of field from jobs
-    jobFields = Job.objects.values("field").distinct()
+    jobFields = Job.objects.filter(type="open").values("field").distinct()
 
     return render(request, "index.html", {
         "type" : type,
@@ -212,10 +212,19 @@ def offer(request):
         if request.user.is_authenticated:
             if hasattr(request.user, "company"):
                 # Get all the job related to that user
-                jobs = request.user.company.jobs.all()
+                openJobs = request.user.company.jobs.filter(type="open").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
+                closeJobs = request.user.company.jobs.filter(type="close").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
                 today = datetime.now()
 
-                for job in jobs:
+                for job in openJobs:
+                    postDate = datetime(year=job.year, month=job.month, day=job.day, hour=job.hour, minute=job.minute, second=job.second)
+                    differenceTime = (today - postDate).total_seconds()
+                    job.text = getPostTime(differenceTime)
+
+                    job.applyCount = job.candidates.count()
+                
+                # Adding Candidate count for each close job
+                for job in closeJobs:
                     postDate = datetime(year=job.year, month=job.month, day=job.day, hour=job.hour, minute=job.minute, second=job.second)
                     differenceTime = (today - postDate).total_seconds()
                     job.text = getPostTime(differenceTime)
@@ -223,8 +232,10 @@ def offer(request):
                     job.applyCount = job.candidates.count()
                 
                 return render(request, "offer.html", {
-                    "jobs" : jobs,
+                    "openJobs" : openJobs,
+                    "closeJobs" : closeJobs,
                     "type" : "company"
                 })
             return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("index"))
     

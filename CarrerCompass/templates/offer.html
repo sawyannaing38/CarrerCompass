@@ -7,33 +7,73 @@
 {% endblock %}
 
 {% block main %}
-    {% if jobs %}
-        <h1>Your Job Offers</h1>
-        <div class="joboffer-list">
-            {% for job in jobs %}
-                <div class="job">
-                    <div class="info">
-                        <h4>Position</h4>
-                        <span>{{job.position}}</span>
-                    </div>
-                    <div class="info">
-                        <h4>Salary</h4>
-                        <span>${{job.salary}} per year</span>
-                    </div>
-                    <p>Posted {{job.text}} ago</p>
+    {% if openJobs or closeJobs %}
+        {% if openJobs %}
+            <h1 class="offer-heading">Your Job Offers</h1>
+            <div class="joboffer-list open-jobs">
+                {% for job in openJobs %}
+                    <div class="job">
+                        <div class="info">
+                            <h4>Position</h4>
+                            <span>{{job.position}}</span>
+                        </div>
+                        <div class="info">
+                            <h4>Salary</h4>
+                            <span>${{job.salary}} per year</span>
+                        </div>
+                        <p>Posted {{job.text}} ago</p>
 
-                    <div class="button-list">
-                        <a href="#" class="closeBtn btn">Close</a>
-                        {% if job.applyCount == 0 %}
-                            <p>Nobody Applied Yet.</p>
-                        {% else %}
-                            <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
-                        {% endif %}
-                        
+                        <div class="button-list">
+                            <button class="closeBtn btn">Close</button>
+                            {% if job.applyCount == 0 %}
+                                <p>Nobody Applied Yet.</p>
+                            {% else %}
+                                <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
+                            {% endif %}
+                            
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                    <div class="confirm-container">
+                        <div class="container">
+                            <h2>Are you really want to close this job.</h2>
+                            <div class="buttons">
+                                <button class="yes" data-id="{{job.id}}">Yes</button>
+                                <button class="no">No</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if closeJobs %}
+            <h1>Close Job</h1>
+            <div class="joboffer-list close-jobs">
+                {% for job in closeJobs %}
+                    <div class="job">
+                        <div class="info">
+                            <h4>Position</h4>
+                            <span>{{job.position}}</span>
+                        </div>
+                        <div class="info">
+                            <h4>Salary</h4>
+                            <span>${{job.salary}} per year</span>
+                        </div>
+                        <p>Posted {{job.text}} ago</p>
+
+                        <div class="button-list">
+                            
+                            {% if job.applyCount == 0 %}
+                                <p>Nobody Applied Yet.</p>
+                            {% else %}
+                                <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     {% else %}
         <p>You don't have any job offer.</p>
         <a href="{% url 'post' %}">Post Some Here.</a>
@@ -41,5 +81,5 @@
 {% endblock %}
 
 {% block js %}
-
+    <script src="{% static 'js/offer.js' %}" type="module"></script>
 {% endblock %}

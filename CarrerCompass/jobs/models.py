@@ -12,7 +12,7 @@ class Job(models.Model):
     description = models.TextField()
     requirement = models.TextField()
     benefit = models.TextField()
-    type = models.CharField(max_length=4, default="open")
+    type = models.CharField(max_length=5, default="open")
     year = models.IntegerField()
     month = models.IntegerField()
     day = models.IntegerField()
