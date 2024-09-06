@@ -151,7 +151,7 @@ form input:focus
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 50px;
     align-items: center;
     width: 80%;
     margin: auto;
@@ -170,6 +170,8 @@ form input:focus
     opacity: 0;
     transition: all 1.5s linear;
     transition-delay: 0.3s;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .job .company-name
