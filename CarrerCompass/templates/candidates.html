@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/candidates.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+{% endblock %}
+
+{% block main %}
+    <h1 class="no-candidate"></h1>
+    <h1 class="job-description">
+        {{job.position}} at 
+        <span class="company-name">{{job.owner.user.username}}</span>
+        <span class="salary">(${{job.salary}} per year)</span>
+    </h1>
+    <div class="container">
+        <div class="detail">
+            <div class="candidate-profile">
+                <img src="{{firstCandidate.appliedPerson.image.url}}" alt="{{firstCandidate.appliedPerson.user.username}}">
+                <div class="candidate-name">
+                    {% if firstCandidate.appliedPerson.gender == "male" %}
+                        <span class="material-symbols-outlined">
+                            male
+                        </span>
+                    {% else %}
+                        <span class="material-symbols-outlined">
+                            female
+                        </span>
+                    {% endif %}
+                    <h3 class="candidate-username">{{firstCandidate.appliedPerson.user.username}}</h3>
+                </div>
+                <p class="candidate-age">{{firstCandidate.appliedPerson.age}} years old</p>
+                <p class="candidate-description">{{firstCandidate.appliedPerson.description}}</p>
+            </div>
+            <div class="candidate-info">
+                <div class="info-container">
+                    <div class="info location">
+                        <span class="material-symbols-outlined">
+                            location_on
+                        </span>
+                        <div>
+                            <h4>Location</h4>
+                            <span class="candidate-location">{{firstCandidate.appliedPerson.location}}</span>
+                        </div>
+                    </div>
+    
+                    <div class="info education">
+                        <span class="material-symbols-outlined">
+                            school
+                        </span>
+                        <div>
+                            <h4>Education</h4>
+                            <span class="candidate-education">{{firstCandidate.appliedPerson.education}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-container">
+                    <div class="info experience">
+                        <span class="material-symbols-outlined">
+                            network_node
+                        </span>
+                        <div>
+                            <h4>Experience</h4>
+                            <span class="candidate-experience">{{firstCandidate.appliedPerson.experience}}</span>
+                        </div>
+                    </div>
+    
+                    <div class="info profession">
+                        <span class="material-symbols-outlined">
+                            person_apron
+                        </span>
+                        <div>
+                            <h4>Profession</h4>
+                            <span class="candidate-profession">{{firstCandidate.appliedPerson.profession}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-container">
+                    <div class="info email">
+                        <span class="material-symbols-outlined">
+                            email
+                        </span>
+                        <div>
+                            <h4>Email</h4>
+                            <span class="candidate-email">{{firstCandidate.appliedPerson.user.email}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-list button-list-primary">
+                    <a href="mailto:{{firstCandidate.appliedPerson.user.email}}" class="contactBtn">Contact</a>
+                    <button class="rejectBtn-primary">Reject</button>
+                </div>
+            </div>
+            <div class="confirm-container-primary confirm-container">
+                <div class="confirm-box">
+                    <div class="confirm-choose">
+                        <h2>Are you really want to reject?</h2>
+                        <div>
+                            <button class="yesBtn-primary btn" data-id="{{firstCandidate.id}}">Yes</button>
+                            <button class="noBtn-primary btn">No</button>
+                        </div>
+                    </div>
+                    <div class="loading">
+                        <l-hourglass
+                            size="40"
+                            bg-opacity="0.1"
+                            speed="1.75"
+                            color="black" 
+                        ></l-hourglass>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="candidate-list">
+            {% for candidate in candidates %}
+                <div class="candidate" data-id="{{candidate.appliedPerson.id}}" data-candidate="{{candidate.id}}">
+                    <div>
+                        <div class="parent">
+                            <img src="{{candidate.appliedPerson.image.url}}" alt="{{candidate.appliedPerson.user.username}}">
+                            <h4>{{candidate.appliedPerson.user.username}}</h4>
+                        </div>
+                        <div class="parent">
+                            <div>
+                                <span class="material-symbols-outlined">
+                                    location_on
+                                </span>
+                                <span>{{candidate.appliedPerson.location}}</span>
+                            </div>
+                        </div>
+                        <div class="parent">
+                            <div>
+                                <span class="material-symbols-outlined">
+                                    school
+                                </span>
+                                <span>{{candidate.appliedPerson.education}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-list">
+                        <a href="mailto:{{candidate.appliedPerson.user.email}}" class="contactBtn">Contact</a>
+                        <button class="rejectBtn" data-id="{{candidate.id}}">Reject</button>
+                    </div>
+                    <div class="reject-confirm">
+                        <h3>Are you really want to reject this candidate?</h3>
+                        <div>
+                            <button class="reject-yes" data-id="{{candidate.id}}">Yes</button>
+                            <button class="reject-no">No</button>
+                        </div>
+                    </div>
+                    <div class="reject-loading">
+                        <l-cardio
+                        size="50"
+                        stroke="4"
+                        speed="2" 
+                        color="white" 
+                        ></l-cardio>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/candidates.js' %}" type="module"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hourglass.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/cardio.js"></script>
+{% endblock %}

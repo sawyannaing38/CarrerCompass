@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
-    pass 
+    email = models.EmailField(unique=True)
 
 class Company(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="company")

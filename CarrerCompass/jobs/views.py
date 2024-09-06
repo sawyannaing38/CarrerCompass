@@ -216,20 +216,24 @@ def offer(request):
                 closeJobs = request.user.company.jobs.filter(type="close").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
                 today = datetime.now()
 
+                # Get total number of employess applied for the open jobs, posted time and total number of employees remaining(not rejected)
                 for job in openJobs:
                     postDate = datetime(year=job.year, month=job.month, day=job.day, hour=job.hour, minute=job.minute, second=job.second)
                     differenceTime = (today - postDate).total_seconds()
                     job.text = getPostTime(differenceTime)
 
                     job.applyCount = job.candidates.count()
+                    job.remainingCount = job.candidates.filter(reject=False).count()
                 
-                # Adding Candidate count for each close job
+                
+                # Adding Candidate count, posted time and remaining candidates(not rejected) for each close job
                 for job in closeJobs:
                     postDate = datetime(year=job.year, month=job.month, day=job.day, hour=job.hour, minute=job.minute, second=job.second)
                     differenceTime = (today - postDate).total_seconds()
                     job.text = getPostTime(differenceTime)
 
                     job.applyCount = job.candidates.count()
+                    job.remainingCount = job.candidates.filter(reject=False).count()
                 
                 return render(request, "offer.html", {
                     "openJobs" : openJobs,
@@ -238,4 +242,31 @@ def offer(request):
                 })
             return HttpResponseRedirect(reverse("index"))
         return HttpResponseRedirect(reverse("index"))
+
+
+# For getting candidates of specific job
+def getCandidates(request, id):
     
+    # Check the user is authenticated, company and owner of job id
+    if request.user.is_authenticated:
+        if hasattr(request.user, "company"):
+            # Getting the job
+            try:
+                job = Job.objects.get(pk=id)
+            except Job.DoesNotExist:
+                return HttpResponseRedirect(reverse("offer"))
+            if job.owner == request.user.company:
+                # Getting all the candidates for that job
+                candidates = job.candidates.filter(reject=False)
+
+                if candidates:
+                    return render(request, "candidates.html",{
+                        "candidates" : candidates,
+                        "firstCandidate" : candidates[0],
+                        "job" : job,
+                        "type" : "company"
+                    })
+                return HttpResponseRedirect(reverse("offer"))
+            return HttpResponseRedirect(reverse("offer"))
+        return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("index"))

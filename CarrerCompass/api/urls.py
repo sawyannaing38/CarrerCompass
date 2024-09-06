@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path("closeJob/<int:id>", views.closeJob, name="closeJob"),
-    path("createCandidate/<int:id>", views.createCandidate, name="createCandidate")
+    path("createCandidate/<int:id>", views.createCandidate, name="createCandidate"),
+    path("rejectCandidate/<int:id>", views.rejectCandidate, name="rejectCandidate"),
+    path("getEmployee/<int:id>", views.getEmployee, name="getEmployee")
 ]

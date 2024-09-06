@@ -97,7 +97,7 @@ p
 {
     font-family: var(--textFont);
     font-size: var(--textSize);
-    margin: 15px 0px;
+    margin: 5px 0px;
 }
 
 .button-list 
@@ -115,7 +115,7 @@ p
     border-radius: 20px;
     text-decoration: none;
     font-size: var(--smallSize);
-    margin: 10px 0px;
+    margin: 5px 0px;
     transition: all 0.5s linear;
 }
 
@@ -125,6 +125,7 @@ p
     color: var(--backColor);
     border: 1px solid var(--textColor);
     padding: 3px 20px;
+    cursor: pointer;
 }
 
 .closeBtn:hover 

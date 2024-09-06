@@ -24,11 +24,16 @@
                         <p>Posted {{job.text}} ago</p>
 
                         <div class="button-list">
-                            <button class="closeBtn btn">Close</button>
                             {% if job.applyCount == 0 %}
                                 <p>Nobody Applied Yet.</p>
                             {% else %}
-                                <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
+                                <p>{{job.applyCount}} Total Applys.</p>
+                            {% endif %}
+                            <button class="closeBtn btn">Close</button>
+                            {% if job.remainingCount == 0 %}
+                                <p>0 candidates Remain.</p>
+                            {% else %}
+                                <a href="{% url 'getCandidates' job.id %}" class="btn detailBtn">{{job.remainingCount}} Remaining.</a>
                             {% endif %}
                             
                         </div>
@@ -62,11 +67,15 @@
                         <p>Posted {{job.text}} ago</p>
 
                         <div class="button-list">
-                            
                             {% if job.applyCount == 0 %}
                                 <p>Nobody Applied Yet.</p>
                             {% else %}
-                                <a href="#" class="btn detailBtn">{{job.applyCount}} already Applied</a>
+                                <p>{{job.applyCount}} Total Applys.</p>
+                            {% endif %}
+                            {% if job.remainingCount == 0 %}
+                                <p>0 candidates Remain.</p>
+                            {% else %}
+                                <a href="{% url 'getCandidates' job.id %}" class="btn detailBtn">{{job.remainingCount}} Remaining.</a>
                             {% endif %}
                             
                         </div>

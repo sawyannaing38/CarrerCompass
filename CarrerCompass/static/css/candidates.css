@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+body 
+{
+    color: var(--textColor);
+    position: relative;
+}
+
+.confirm-container
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-container .confirm-box
+{
+    padding: 30px 40px;
+    background-color: var(--textColor);
+    border-radius: 15px;
+}
+
+.confirm-container .confirm-box h2 
+{
+    text-align: center;
+    font-family: var(--headingFont);
+    font-weight: 400;
+    color: var(--backColor);
+    margin: 10px 0px;
+}
+
+.btn 
+{
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.yesBtn-primary:hover
+{
+    background-color: red;
+    color: var(--textColor);
+}
+
+.noBtn-primary:hover
+{
+    background-color: var(--styleColor);
+    color: var(--textColor);
+}
+
+.job-description
+{
+    font-family: var(--headingFont);
+    font-size: var(--largeSize);
+    font-weight: 500;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.company-name
+{
+    color: var(--styleColor);
+}
+
+.salary
+{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.container 
+{
+    display: flex;
+    align-items: flex-start;
+}
+
+.container .detail 
+{
+    width: 60%;
+    border-right: 1px solid var(--textColor);
+}
+
+.detail, .candidate-profile
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candidate-profile img 
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.7);
+}
+
+.candidate-name
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--headingFont);
+    color: var(--styleColor);
+    font-size: var(--textSize);
+    margin: 5px 0px;
+}
+
+.candidate-profile p 
+{
+    font-size: var(--textSize);
+    font-family: var(--textFont);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 5px 0px;
+}
+
+.info-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0px;
+}
+
+.info-container .info 
+{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.info-container .info span
+{
+    color: var(--styleColor);
+}
+
+.info-container .info > div 
+{
+    gap: 5px;
+}
+
+.info-container .info > div h4 
+{
+    font-size: var(--mediumSize);
+    font-family: var(--textFont);
+    font-weight: 400;
+}
+
+.info-container .info > div span 
+{
+    font-family: var(--textFont);
+    color: var(--styleColor);
+    display: block;
+    max-width: 250px;
+}
+
+.button-list .contactBtn 
+{
+    text-decoration: none;
+    color: var(--textColor);
+    text-align: center;
+    padding: 5px 10px;
+    background-color: var(--styleColor);
+    font-family: var(--headingFont);
+    border-radius: 15px;
+    font-size: var(--smallSize);
+    margin-right: 20px;
+    border: 1px solid transparent;
+    transition: all 0.5s linear;
+}
+
+.button-list .contactBtn:hover 
+{
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+}
+
+.button-list .rejectBtn-primary
+{
+    background-color: red;
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    font-size: var(--smallSize);
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+
+.button-list .rejectBtn-primary:hover 
+{
+    border: 1px solid red;
+    background-color: transparent;
+}
+
+.candidate-list
+{
+    width: 30%;
+    padding-left: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: visible;
+
+}
+
+.candidate
+{
+    width: 90%;
+    margin-bottom: 10px;
+    border: 1px solid var(--textColor);
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+    position: relative;
+}
+
+.candidate:hover 
+{
+    transform: scale(1.01);
+}
+
+.candidate-list .candidate img 
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--backColor);
+}
+
+.candidate-list .candidate > div
+{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.parent , .parent > div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.parent h4 
+{
+    font-family: var(--headingFont);
+    font-size: var(--smallSize);
+}
+
+.parent > div span 
+{
+    font-size: var(--textSize);
+    color: var(--styleColor);
+}
+
+.parent > div span:nth-child(2)
+{
+    font-family: var(--textFont);
+}
+
+.button-list
+{
+    margin: 10px 0px;
+}
+
+
+.button-list .rejectBtn 
+{
+    background-color: red;
+    color: var(--textColor);
+    border: 1px solid transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+
+
+.button-list .rejectBtn:hover 
+{
+    border: 1px solid red;
+    background-color: transparent;
+}
+
+.show-loading .confirm-choose 
+{
+    display: none;
+}
+
+.show-loading .loading 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading 
+{
+    display: none;
+}
+
+.active 
+{
+    background-color: var(--textColor);
+    color: var(--backColor);
+    border: 1px solid var(--styleColor);
+}
+
+.candidate div.reject-confirm 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--backColor);
+    border-radius: 20px;
+    padding: 0px 10px;
+}
+
+.candidate .reject-confirm button 
+{
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+    background-color: transparent;
+    background-color: var(--textColor);
+    border-radius: 15px;
+}
+
+.candidate .reject-confirm .reject-yes:hover 
+{
+    border: 1px solid red;
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+.candidate .reject-confirm h3 
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+}
+.candidate .reject-confirm .reject-no:hover 
+{
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+.candidate div.reject-loading 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--backColor);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.disabled 
+{
+    pointer-events: none;
+}

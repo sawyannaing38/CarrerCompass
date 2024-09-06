@@ -23,3 +23,4 @@ class Job(models.Model):
 class Candidate(models.Model):
     appliedPerson = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name="applied_job")
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name="candidates")
+    reject = models.BooleanField(default=False)

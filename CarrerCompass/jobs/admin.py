@@ -7,7 +7,7 @@ class AdminJob(admin.ModelAdmin):
 
 # Admin view for Candidate
 class AdminCandidate(admin.ModelAdmin):
-    list_display = ["appliedPerson", "job"]
+    list_display = ["id", "appliedPerson", "job"]
 
 # Register your models here.
 admin.site.register(Job, AdminJob)
