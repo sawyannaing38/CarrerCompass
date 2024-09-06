@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% if jobs %}
+        <h1>Explore Your Dream Job!</h1>
+        <div class="filter">
+            <input type="text" name="type" id="type" placeholder="Field of Job" autocomplete="off" autofocus>
+            <input type="text" name="location" id="location" placeholder="Location" autocomplete="off">
+        </div>
+        <div class="job-lists">
+            {% for job in jobs %}
+                <div class="job">
+                    <h3>{{job.owner.user.username}}</h3>
+                    <div class="info">
+                        <h4>Position</h4>
+                        <span class="position">{{job.position}}</span>
+                    </div>
+                    <div class="info">
+                        <h4>Salary</h4>
+                        <span>${{job.salary}}</span>
+                    </div>
+                    <div class="info">
+                        <h4>Location</h4>
+                        <span class="location">{{job.location}}</span>
+                    </div>
+                    <div class="info hide">
+                        <span class="field">{{job.field}}</span>
+                    </div>
+                    <p>Posted {{job.postDate}} ago</p>
+
+                    <a href="{% url 'jobDetails' job.id %}" class="watchBtn">Watch Details</a>
+                </div>
+            {% endfor %}
+        </div>
+        <footer>
+            <div class="banner">
+                <img src="{% static 'images/logo.png' %}" alt="CareerCompass">
+                <h2>CareerCompass</h2>
+            </div>
+            <h3>Available Fields</h3>
+            <ul class="field-lists">
+                {% for field in fields %}
+                    <li class="fieldlist">{{field.field}}</li>
+                {% endfor %}
+            </ul>
+        </footer>
+    {% else %}
+        <h1>No Available Jobs!</h1>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/jobs.js' %}" type="module"></script>
+{% endblock %}

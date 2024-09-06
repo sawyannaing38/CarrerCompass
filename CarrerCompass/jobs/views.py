@@ -23,6 +23,8 @@ def index(request):
     # Getting all the available jobs
     jobs = Job.objects.filter(type="open").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
 
+    jobs = jobs[0:8]
+
     # Getting time difference between job posted and now
     today = datetime.now()
 
@@ -35,14 +37,10 @@ def index(request):
 
         job.text = getPostTime(differenceTime)
 
-    # Get all type of field from jobs
-    jobFields = Job.objects.filter(type="open").values("field").distinct()
-
     return render(request, "index.html", {
         "type" : type,
         "user" : request.user,
-        "jobs" : jobs,
-        "jobFields" : jobFields
+        "jobs" : jobs
     })
 
 # For posting a job offer
@@ -270,3 +268,39 @@ def getCandidates(request, id):
             return HttpResponseRedirect(reverse("offer"))
         return HttpResponseRedirect(reverse("index"))
     return HttpResponseRedirect(reverse("index"))
+
+# For Job Lists
+def jobs(request):
+
+    # Getting the type of user
+    if hasattr(request.user, "company"):
+        type = "company"
+    
+    elif hasattr(request.user, "employee"):
+        type = "employee"
+    
+    else:
+        type = "guest"
+    
+    # Getting all the availalbe jobs
+    availableJobs = Job.objects.filter(type="open").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
+
+    today = datetime.now()
+
+    # Get posted time for each job
+    for availableJob in availableJobs:
+        postDate = datetime(year=availableJob.year, month=availableJob.month, day=availableJob.day, hour=availableJob.hour, minute=availableJob.minute, second=availableJob.second)
+        
+        # Getting difference data in seconds
+        totalDifference = (today - postDate).total_seconds()
+
+        availableJob.postDate = getPostTime(totalDifference)
+    
+    # Getting all the type of jobs available
+    fields = Job.objects.filter(type="open").values("field").distinct()
+
+    return render(request, "jobs.html", {
+        "type" : type,
+        "jobs" : availableJobs,
+        "fields" : fields
+    })

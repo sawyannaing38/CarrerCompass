@@ -48,21 +48,6 @@
         </div>
     {% endif %}
 
-    <div class="footer">
-        <div class="banner">
-            <img src="{% static 'images/logo.png' %}" alt="CareerCompass" class="logo-image">
-            <h1>CareerCompass</h1>
-        </div>
-        {% if jobFields %}
-            <h1 class="available-heading">Available Job Types</h1>
-            <ul class="jobfield-lists">
-              {% for jobField in jobFields %}
-                <li><a href="#">{{jobField.field}}</a></li>
-              {% endfor %}
-            </ul>
-        {% endif %}
-
-    </div>
 {% endblock %}
 
 {% block js %}

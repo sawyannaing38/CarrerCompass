@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+h1 
+{
+    text-align: center;
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    margin: 30px 0px;
+}
+
+div.filter 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 40px;
+}
+
+div.filter input 
+{
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    border: 1px solid var(--styleColor);
+    outline: none;
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+div.filter input:focus 
+{
+    background-color: none;
+    outline: none;
+}
+
+div.job-lists
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 70px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+div.job-lists .job 
+{
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 250px;
+    height: 300px;
+    border: 1px solid var(--styleColor);
+    box-shadow: 0px 0px 10px 1px var(--styleColor);
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 1.5s linear;
+}
+
+div.job-lists .job h3 
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    font-weight: 600;
+    font-size: var(--mediumSize);
+    margin: 20px;
+}
+
+div.job-lists .job .info 
+{
+    margin: 10px 20px;
+    text-align: left;
+    color: var(--textColor);
+}
+
+div.job-lists .job .info h4 
+{
+    font-family: var(--headingFont);
+    margin: 5px 0px;
+}
+
+div.job-lists .job .info span 
+{
+    color: var(--styleColor);
+    font-family: var(--textFont);
+}
+
+div.job-lists .job p 
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    margin: 0px 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.watchBtn 
+{
+    margin-top: 15px;
+    background-color: var(--textColor);
+    color: var(--backColor);
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 0px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--headingFont);
+}
+
+footer 
+{
+    background-color: var(--backColor);
+    box-shadow: 0px -1px 10px 0px var(--styleColor);
+    margin-bottom: 0px;
+}
+
+footer .banner 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 20px 0px;
+}
+
+footer .banner h2 
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+}
+
+footer h3 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    text-align: center;
+}
+
+.field-lists
+{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0px auto;
+    margin-top: 30px;
+}
+
+.field-lists li 
+{
+    padding: 10px 0px;
+}
+
+.field-lists li 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+    font-family: var(--textFont);
+    transition: all 0.5s linear;
+    list-style: none;
+    cursor: pointer;
+}
+
+.field-lists li:hover
+{
+    color: var(--textColor);
+}
+
+div.job-lists .show 
+{
+    opacity: 1;
+}
+
+.hide 
+{
+    display: none;
+}
