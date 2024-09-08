@@ -7,5 +7,6 @@ urlpatterns = [
     path("jobDetails/<int:id>", views.jobDetails, name="jobDetails"),
     path("offer/", views.offer, name="offer"),
     path("getCandidates/<int:id>", views.getCandidates, name="getCandidates"),
-    path("jobs/", views.jobs, name="jobs")
+    path("jobs/", views.jobs, name="jobs"),
+    path("companyList/", views.companyList, name="companyList")
 ]

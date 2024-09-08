@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+h1 
+{
+    text-align: center;
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    margin: 20px 0px;
+}
+
+input 
+{
+    display: block;
+    margin: 20px auto;
+    width: 40%;
+    border: 1px solid var(--styleColor);
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+input:focus 
+{
+    outline: none;
+}
+
+.company-list 
+{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 60px auto;
+}
+
+.company-list .company 
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 300px;
+    height: 90px;
+    opacity: 0;
+}
+
+.company-list .show 
+{
+    opacity: 1;
+}
+
+.company-list .company img 
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.company-list .company .company-info
+{
+    display: flex;
+    gap: 15px;
+    color: var(--textColor);
+}
+
+.company-list .company .company-info h2 
+{
+    font-family: var(--headingFont);
+    margin-bottom: 5px;
+}
+
+.company-list .company .company-info h2 a 
+{
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.company-list .company .company-info h2 a:hover 
+{
+    text-decoration: underline;
+}
+.company-list .company .company-info span 
+{
+    font-size: var(--mediumSize);
+}
+.company-list .company .company-info .fill 
+{
+    color: var(--styleColor);
+}
+
+.company-list .company .company-info .rating
+{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.company-list .company .company-info .rating p 
+{
+    font-family: var(--textFont);
+    font-size: var(--smallSize);
+}
+
+.job-info 
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    margin: 10px 0px;
+}
+
+.job-info span 
+{
+    margin-right: 20px;
+}
+
+.job-info a 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+}
+
+.job-info a:hover 
+{
+    text-decoration: underline;
+}

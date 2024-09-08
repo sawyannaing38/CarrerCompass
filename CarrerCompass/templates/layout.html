@@ -25,7 +25,7 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="{% url 'jobs' %}">Job Lists</a></li>
-                <li><a href="#">Company Lists</a></li>
+                <li><a href="{% url 'companyList' %}">Company Lists</a></li>
             </ul>
             <ul>
                 {% if type == "employee" %}
@@ -37,7 +37,7 @@
                     <li><a href="{% url 'post' %}">Post</a></li>
                     <li><a href="{% url 'offer' %}">Your Offers</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
-                    <li><a href="#">
+                    <li><a href="{% url 'companyProfile' user.company.id %}">
                         <img src="{{user.company.image.url}}" alt="{{user.username}}" class="profile">
                     </a></li>
                 {% else %}

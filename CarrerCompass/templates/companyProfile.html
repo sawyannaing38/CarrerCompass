@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{% static 'css/companyProfile.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="company-profile">
+        <img src="{{company.image.url}}" alt="{{company.user.username}}" class="company-img">
+        <div class="company-info">
+            <div class="rating">
+                {% for _ in company.rating %}
+                    <span class="material-symbols-outlined fill">
+                        family_star
+                    </span>
+                {% endfor %}
+    
+    
+                {% for _ in company.remainRating %}
+                    <span class="material-symbols-outlined">
+                        family_star
+                    </span>
+                {% endfor %}
+            </div>
+            <h2 class="company-name">{{company.user.username}}</h2>
+        </div>
+    </div>
+    <p class="company-description">{{company.description}}</p>
+    <div class="button-list">
+        <a href="#" class="jobBtn btn">Look For jobs</a>
+        {% if type != "guest" and not owner %}
+            <button class="rateBtn btn">Rate {{company.user.username}}</button>
+        {% endif %}
+    </div>
+    <div class="reviews">
+        <span class="material-symbols-outlined left-arrow">
+            arrow_back_ios
+            </span>
+        <div class="review-list">
+            {% for review in reviews %}
+                <div class="review">
+                    <div class="review-rating">
+                        {% for _ in review.reviewRating %}
+                            <span class="material-symbols-outlined fill">
+                                family_star
+                            </span>
+                        {% endfor %}
+                        {% for _ in review.reviewRemainRating %}
+                            <span class="material-symbols-outlined">
+                                family_star
+                            </span>
+                        {% endfor %}
+                    </div>
+                    <p class="review-description">
+                        {{review.description}}
+                    </p>
+                    <div class="review-profile">
+                        {% if review.type == "company" %}
+                            <img src="{{review.writer.company.image.url}}" alt="{{review.writer.username}}" class="company-img">
+                        {% else %}
+                            <img src="{{review.writer.employee.image.url}}" alt="{{review.writer.username}}" class="employee-img">
+                        {% endif %}
+                        <div>
+                            <h3 class="review-name">
+                                {{review.writer.username}}
+                            </h3>
+                            {% if review.type == "employee" %}
+                                <p class="review-profession">{{review.writer.employee.profession}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div> 
+            {% endfor %}
+        </div>
+        <span class="material-symbols-outlined right-arrow">
+            arrow_forward_ios
+        </span>
+    </div>
+    <div class="user-rating">
+        <div>
+            <div class="stars">
+                <span class="material-symbols-outlined star">
+                    family_star
+                </span>
+                <span class="material-symbols-outlined star">
+                    family_star
+                </span>
+                <span class="material-symbols-outlined star">
+                    family_star
+                </span>
+                <span class="material-symbols-outlined star">
+                    family_star
+                </span>
+                <span class="material-symbols-outlined star">
+                    family_star
+                </span>
+            </div>
+            <textarea name="description" id="description" placeholder="Review"></textarea>
+            <div class="button-list">
+                <button class="addBtn" data-id="{{company.id}}">Add</button>
+                <button class="discardBtn">Discard</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="module" src="{% static 'js/companyProfile.js' %}"></script>
+{% endblock %}

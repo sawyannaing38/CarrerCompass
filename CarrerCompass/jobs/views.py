@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Job
-
+from registration.models import Company
+from django.db.models import Avg
 from datetime import datetime
 from .helpers import getPostTime
 
@@ -304,3 +305,40 @@ def jobs(request):
         "jobs" : availableJobs,
         "fields" : fields
     })
+
+# For Getting Company List
+def companyList(request):
+    
+    # Getting the type of user
+    if hasattr(request.user, "company"):
+        type = "company"
+    elif hasattr(request.user, "employee"):
+        type = "employee"
+    else:
+        type = "guest"
+
+    # Getting the all compaies
+    companies = Company.objects.all()
+
+    for company in companies:
+        
+        # Getting company review count
+        company.reviewCount = company.reviews.count() if company.reviews.exists() else 0
+
+        # Getting company average Rating
+        company.rating = company.reviews.aggregate(Avg("rating")) if company.reviews.exists() else 0
+        company.ratedRating = range(round(company.rating["rating__avg"]))
+        company.remainRating = range(5 - round(company.rating["rating__avg"]))
+
+        # Getting company total jobs
+        company.totalJobs = company.jobs.count() if company.jobs.exists() else 0 
+
+        # Getting company total open jobs
+        company.openJobs = company.jobs.filter(type="open").count() if company.jobs.exists() else 0
+
+    
+    return render(request, "companyList.html", {
+        "type" : type,
+        "companies" : companies
+    })
+        

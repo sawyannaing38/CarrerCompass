@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializer import JobSerializer, CandidateSerializer, EmployeeSerializer
+from .serializer import JobSerializer, CandidateSerializer, EmployeeSerializer, CompanyReviewSerializer
 from rest_framework import status
 from jobs.models import Job, Candidate
-from registration.models import Employee
+from registration.models import Employee, Company
 from registration.helpers import sendEmail
 
 # For Closing Job
@@ -98,4 +98,27 @@ def getEmployee(request, id):
     serializer = EmployeeSerializer(employee)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+# Creating Review for company
+@api_view(["POST"])
+def createCompanyReview(request, id):
+    if request.user.is_authenticated:
+
+        # Try to get company of id
+        try:
+            company = Company.objects.get(pk=id)
+        except Company.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        data = request.data.copy()
+        data["company"] = id
+        data["writer"] = request.user.id
+
+        # Create serializer
+        seralizer = CompanyReviewSerializer(data=data)
+
+        if seralizer.is_valid():
+            seralizer.save()
+            return Response(seralizer.data, status=status.HTTP_201_CREATED) 
+        return Response(seralizer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(status=status.HTTP_403_FORBIDDEN)
 

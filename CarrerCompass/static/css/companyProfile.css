@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+body 
+{
+    position: relative;
+}
+
+.company-profile .company-img 
+{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.company-profile 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px;
+}
+
+.company-profile .company-name
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+}
+
+.company-profile .rating span 
+{
+    margin: 10px 0px;
+    color: var(--textColor);
+}
+
+.company-profile .rating span.fill 
+{
+    color: var(--styleColor);
+}
+
+.company-description 
+{
+    width: 60%;
+    text-align: center;
+    font-family: var(--textFont);
+    color: var(--textColor);
+    margin: 50px auto;
+    font-size: var(--mediumSize);
+    opacity: 0.7;
+}
+
+.button-list 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-list .btn 
+{   
+    display: block;
+    width: 150px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: var(--headingFont);
+    text-align: center;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+
+.button-list .jobBtn 
+{
+    color: var(--textColor);
+    border: 1px solid var(--styleColor);
+    font-family: var(--headingFont);
+    text-decoration: none;
+}
+
+.button-list .jobBtn:hover 
+{
+    background-color: var(--styleColor);
+    border: 1px solid transparent;
+    color: var(--backColor);
+}
+
+.button-list .rateBtn 
+{
+    color: var(--backColor);
+    background-color: var(--styleColor);
+    border: 1px solid transparent;
+    font-family: var(--headingFont);
+    font-size: var(--textSize);
+}
+
+.button-list .rateBtn:hover 
+{
+    color: var(--textColor);
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+}
+
+.reviews 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reviews > span 
+{
+    color: var(--textColor);
+    margin: 0px 20px;
+    font-size: var(--largeSize);
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+
+.reviews > span:hover 
+{
+    color: var(--styleColor);
+}
+
+.review-list 
+{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin: 40px auto;
+    gap: 30px;
+    width: 75%;
+    justify-content: space-between;
+    scroll-behavior: smooth;
+}
+
+.review-list .review 
+{
+    width: 360px;
+    height: 240px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid var(--styleColor);
+    border-radius: 15px;
+    padding: 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.review-list .review span.fill 
+{
+    color: var(--styleColor);
+}
+
+.review-list .review span 
+{
+    color: var(--textColor);
+}
+
+.review-list .review .company-img,
+.review-list .review .employee-img
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-description 
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    font-size: var(--textSize);
+    width: 100%;
+    word-break: break-all;
+}
+
+.review-profile 
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-profile .review-name 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+}
+
+.review-profile .review-profession
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    color: var(--styleColor);
+}
+
+.user-rating
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(1px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-rating > div 
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.user-rating textarea
+{
+    color: var(--textColor);
+    resize: none;
+    width: 300px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--styleColor);
+}
+
+.user-rating textarea:focus 
+{
+    outline: none;
+}
+
+.user-rating .addBtn, .user-rating .discardBtn
+{
+    padding: 5px 15px;
+    background-color: transparent;
+    color: var(--textColor);
+    border: 1px solid var(--textColor);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 15px 0px;
+    transition: all 0.5s linear;
+}
+
+.user-rating .addBtn:hover, .user-rating .discardBtn:hover
+{
+    border: 1px solid var(--styleColor);
+}
+
+.stars span 
+{
+    cursor: pointer;
+}
+
+.stars span.fill 
+{
+    color: var(--styleColor);
+}

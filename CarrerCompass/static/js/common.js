@@ -95,7 +95,7 @@ export function toggleShow(obj)
     const height = window.innerHeight;
 
     const objHeight = obj.getBoundingClientRect().top;
-    console.log(obj.getBoundingClientRect().bottom);
+    
     if ((objHeight < height) && (obj.getBoundingClientRect().bottom >= 0))
     {
         obj.classList.add("show");

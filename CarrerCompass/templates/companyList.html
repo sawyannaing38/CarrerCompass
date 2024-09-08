@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{% static 'css/companyList.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% if companies %}
+        <h1>Companies</h1>
+        <input type="text" name="company" id="company" placeholder="Company" autocomplete="off" autofocus>
+        <div class="company-list">
+            {% for company in companies %}
+                <div class="company">
+                    <div class="company-info">
+                        <a href="{% url 'companyProfile' company.id %}">
+                            <img src="{{company.image.url}}" alt="{{company.user.username}}">
+                        </a>
+                        <div>
+                            <h2 class="company-name"><a href="{% url 'companyProfile' company.id %}">{{company.user.username}}</a></h2>
+                            <div class="rating">
+                                <div class="stars">
+                                    {% for _ in company.ratedRating %}
+                                        <span class="material-symbols-outlined fill">
+                                            family_star
+                                        </span>
+                                    {% endfor %}
+
+                                    {% for _ in company.remainRating %}
+                                        <span class="material-symbols-outlined">
+                                            family_star
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                                <p>( {{company.reviewCount}} reviews)</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="job-info">
+                        <span>{{company.totalJobs}} total jobs</span>
+                        <a href="#">{{company.openJobs}} open jobs</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1>No Company Yet!</h1>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/companyList.js' %}" type="module"></script>
+{% endblock %}
