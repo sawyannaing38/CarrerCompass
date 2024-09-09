@@ -38,6 +38,7 @@ document.addEventListener("scroll", function()
     toggleShow(rightBtn);
     toggleShow(heading);
     toggleShow(reviewHeading);
+    toggleShow(rateBtn);
 })
 
 leftBtn.addEventListener("click", function()
@@ -103,4 +104,9 @@ stars.forEach(function(star)
     {
         star.classList.toggle("fill");
     })
+})
+
+discardBtn.addEventListener("click", function()
+{
+    rateContainer.style.display = "none";
 })

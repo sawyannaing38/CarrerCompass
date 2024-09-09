@@ -40,7 +40,7 @@
                     </div>
                     <div class="job-info">
                         <span>{{company.totalJobs}} total jobs</span>
-                        <a href="#">{{company.openJobs}} open jobs</a>
+                        <a href="{% url 'getCompanyJobs' company.id %}">{{company.openJobs}} open jobs</a>
                     </div>
                 </div>
             {% endfor %}

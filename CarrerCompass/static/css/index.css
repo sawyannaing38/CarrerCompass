@@ -424,6 +424,7 @@ form input:focus
     border-radius: 15px;
     cursor: pointer;
     transition: all 1s linear;
+    opacity: 0;
 }
 
 .rateBtn:hover 
@@ -499,4 +500,122 @@ form input:focus
 .rate-box .stars span.fill 
 {
     color: var(--styleColor);
+}
+
+.follow 
+{
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.follow h2 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    text-align: center;
+    font-size: var(--largeSize);
+}
+
+.follow ul 
+{
+    margin: 50px auto;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--largeSize);
+}
+
+.follow ul li a 
+{
+    position: relative;
+}
+
+.follow ul li a.facebook 
+{
+    color: #1877F2;
+}
+
+.follow ul li a.facebook:after 
+{
+    content: "\f09a";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 150%;
+    left: 0;
+    transform: scaleY(-1);
+    filter: blur(3px); 
+    z-index: -1; 
+    color: #1877F2;
+}
+
+.follow ul li a.tiktok:after 
+{
+    content: "\e07b";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 150%;
+    left: 0;
+    transform: scaleY(-1);
+    filter: blur(3px); 
+    z-index: -1; 
+    color: #69C9D0;
+}
+
+.follow ul li a.tiktok
+{
+    color: #69C9D0;
+}
+
+.follow ul li a.twitter:after 
+{
+    content: "\e61b";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 150%;
+    left: 0;
+    transform: scaleY(-1);
+    filter: blur(3px); 
+    z-index: -1; 
+    color: var(--textColor);
+}
+
+.follow ul li a.twitter 
+{
+    color: var(--textColor);
+}
+
+.follow ul li a.instagram:after 
+{
+    content: "\f16d";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 150%;
+    left: 0;
+    transform: scaleY(-1);
+    filter: blur(3px); 
+    z-index: -1; 
+    color: #DD2A7B ;
+}
+
+.follow ul li a.instagram
+{
+    color: #DD2A7B;
+}
+
+.about-us 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us p 
+{
+    width: 60%;
+    margin: auto;
+    color: var(--styleColor);
+    font-family: var(--textFont);
+    text-align: center;
+    font-size: var(--largestSize);
 }

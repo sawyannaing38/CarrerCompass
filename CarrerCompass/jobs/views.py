@@ -25,6 +25,8 @@ def index(request):
     # Getting all the available jobs
     jobs = Job.objects.filter(type="open").order_by("-year", "-month", "-day", "-hour", "-minute", "-second")
 
+    count = jobs.count()
+
     jobs = jobs[0:8]
 
     # Getting time difference between job posted and now
@@ -56,7 +58,8 @@ def index(request):
         "type" : type,
         "user" : request.user,
         "jobs" : jobs,
-        "reviews" : reviews
+        "reviews" : reviews,
+        "count" : count
     })
 
 # For posting a job offer

@@ -55,6 +55,7 @@ fieldLists.forEach(function(fieldList)
         filter(this.textContent.toLowerCase());
     })
 })
+
 // Function for filtering
 function filter(fieldValue="", locationValue="")
 {
@@ -64,6 +65,7 @@ function filter(fieldValue="", locationValue="")
         jobs.forEach(function(job)
         {
             job.style.display = "block";
+            job.classList.add("show");
         })
     }
 
@@ -82,6 +84,7 @@ function filter(fieldValue="", locationValue="")
                 if ((jobField.includes(fieldValue)) && (jobLocation.includes(locationValue)))
                 {
                     job.style.display = "block";
+                    job.classList.add("show");
                 }
 
                 else 
@@ -96,6 +99,7 @@ function filter(fieldValue="", locationValue="")
                 if (jobField.includes(fieldValue))
                 {
                     job.style.display = "block";
+                    job.classList.add("show");
                 }
 
                 else 
@@ -110,6 +114,7 @@ function filter(fieldValue="", locationValue="")
                 if (jobLocation.includes(locationValue))
                 {
                     job.style.display = "block";
+                    job.classList.add("show");
                 }
 
                 else 
