@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root 
+{
+    --backColor : #010101;
+    --textColor : #FFFFFF;
+    --styleColor : #1CD6DC;
+    --headingFont : "Roboto", sans-serif;
+    --textFont : "Inter", sans-serif;
+    --largestSize : 40px;
+    --largeSize : 34px;
+    --mediumSize : 20px;
+    --textSize : 16px;
+    --smallSize : 14px;
+}
+
+.main 
+{
+    width: 500px;
+    margin: 30px auto;
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.main .employee-profile 
+{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-img 
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid var(--textColor);
+}
+
+.info > div 
+{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--styleColor);
+    font-family: var(--textFont);
+    margin: 20px 0px;
+}
+
+.showcase 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.showcase h2 
+{
+    color: var(--textColor);
+    font-family: var(--headingFont);
+}
+
+.profession 
+{
+    color: var(--textColor);
+    font-family: var(--textFont);
+    margin: 25px 0px;
+}
+
+.bio 
+{
+    margin: 25px 0px;
+}
+
+.bio h3 , .skills h3 
+{
+    font-family: var(--headingFont);
+    color: var(--textColor);
+    margin: 10px 0px;
+}
+
+.bio p , .skills p 
+{
+    font-family: var(--textFont);
+    color: var(--textColor);
+}

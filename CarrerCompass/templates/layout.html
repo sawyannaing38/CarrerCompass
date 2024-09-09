@@ -30,7 +30,7 @@
             <ul>
                 {% if type == "employee" %}
                     <li><a href="{% url 'logout' %}">Logout</a></li>
-                    <li><a href="#">
+                    <li><a href="{% url 'employeeProfile' user.employee.id %}">
                         <img src="{{user.employee.image.url}}" alt="{{user.username}}" class="profile">
                     </a></li>
                 {% elif type == "company" %}

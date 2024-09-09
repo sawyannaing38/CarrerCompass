@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{% static 'css/employeeProfile.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="employee-profile">
+            <div class="showcase">
+                <img src="{{employee.image.url}}" alt="{{employee.user.username}}" class="profile-img">
+                <h2>{{employee.user.username}}</h2>
+            </div>
+            <div class="info">
+                <div>
+                    <span class="material-symbols-outlined">
+                        school
+                    </span>
+                    <span>{{employee.education}}</span>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">
+                        location_on
+                    </span>
+                    <span>{{employee.location}}</span>
+                </div>
+            </div>
+        </div>
+        <p class="profession">Currently working as {{employee.profession}}</p>
+        <div class="bio">
+            <h3>Bio</h3>
+            <p>{{employee.description}}</p>
+        </div>
+        <div class="skills">
+            <h3>Skills</h3>
+            <p>{{employee.skills}}</p>
+        </div>
+    </div>
+{% endblock %}

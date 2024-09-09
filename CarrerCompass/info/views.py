@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from registration.models import Company
+from registration.models import Company, Employee
 from django.urls import reverse
 from django.db.models import Avg
 from django.http import HttpResponseRedirect
@@ -57,3 +57,22 @@ def companyProfile(request, id):
         })
 
         
+def employeeProfile(request, id):
+    # Getting the type request user
+    if hasattr(request.user, "company"):
+        type = "company"
+    elif hasattr(request.user, "employee"):
+        type = "employee"
+    else:
+        type = "guest"
+    
+    # Try to get the employee
+    try:
+        employee = Employee.objects.get(pk=id)
+    except Employee.DoesNotExist:
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "employeeProfile.html", {
+            "type" : type,
+            "employee" : employee
+        })
