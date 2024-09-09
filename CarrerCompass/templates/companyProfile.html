@@ -30,7 +30,7 @@
     </div>
     <p class="company-description">{{company.description}}</p>
     <div class="button-list">
-        <a href="#" class="jobBtn btn">Look For jobs</a>
+        <a href="{% url 'getCompanyJobs' company.id %}" class="jobBtn btn">Look For jobs</a>
         {% if type != "guest" and not owner %}
             <button class="rateBtn btn">Rate {{company.user.username}}</button>
         {% endif %}

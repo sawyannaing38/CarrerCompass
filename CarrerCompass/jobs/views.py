@@ -357,3 +357,40 @@ def companyList(request):
         "companies" : companies
     })
         
+# For Getting jobs for specific company
+def getCompanyJobs(request, id):
+
+    # Getting the type of user
+    if hasattr(request.user, "company"):
+        type = "company"
+    elif hasattr(request.user, "employee"):
+        type = "employee"
+    else:
+        type = "guest"
+    
+    # Try to get the company of id
+    try:
+        company = Company.objects.get(pk=id)
+    except Company.DoesNotExist:
+        return HttpResponseRedirect(reverse("companyList"))
+    else:
+        # Getting all the open jobs for that company
+        jobs = company.jobs.filter(type="open")
+
+        today = datetime.now()
+
+        # Getting the post date of each job
+        for job in jobs:    
+
+            # Posted time
+            postedTime = datetime(year=job.year, month=job.month, day=job.day, hour=job.hour, minute=job.minute, second=job.second)
+
+            # Different in seconds
+            totalSeconds = (today - postedTime).total_seconds()
+
+            job.postTime = getPostTime(totalSeconds)
+        
+        return render(request, "companyJobs.html", {
+            "type" : type,
+            "jobs" : jobs
+        })

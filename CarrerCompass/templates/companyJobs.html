@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/companyJobs.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% if jobs %}
+        <div class="filter">
+            <input type="text" name="field" id="field" placeholder="Field of job" autocomplete="off" autofocus>
+            <input type="text" name="location" id="location" placeholder="Location" autocomplete="off">
+        </div>
+        <div class="job-lists">
+            {% for job in jobs %}
+                <div class="job">
+                    <div class="info">
+                        <h3>Position</h3>
+                        <span>{{job.position}}</span>
+                    </div>
+                    <div class="info">
+                        <h3>Salary</h3>
+                        <span>${{job.salary}} per year</span>
+                    </div>
+                    <div class="info">
+                        <h3>Location</h3>
+                        <span class="location">{{job.location}}</span>
+                    </div>
+                    <div class="info field">
+                        <h3>Field</h3>
+                        <span class="job-field">{{job.field}}</span>
+                    </div>
+                    <p class="post-time">Posted {{job.postTime}} ago</p>
+                    <a href="{% url 'jobDetails' job.id %}" class="watchBtn">Watch Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1>No Open Jobs.</h1>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/companyJobs.js' %}" type="module"></script>
+{% endblock %}
