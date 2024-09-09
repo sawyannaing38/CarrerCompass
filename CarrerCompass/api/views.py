@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializer import JobSerializer, CandidateSerializer, EmployeeSerializer, CompanyReviewSerializer
+from .serializer import JobSerializer, CandidateSerializer, EmployeeSerializer, CompanyReviewSerializer, WebsiteReviewSerializer
 from rest_framework import status
 from jobs.models import Job, Candidate
 from registration.models import Employee, Company
@@ -122,3 +122,22 @@ def createCompanyReview(request, id):
         return Response(seralizer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(status=status.HTTP_403_FORBIDDEN)
 
+# For Adding website Review
+@api_view(["POST"])
+def createWebsiteReview(request):
+    
+    # Check that request user is authenticated or not
+    if request.user.is_authenticated:
+        
+        data = request.data.copy()
+        data["writer"] = request.user.id
+
+        # Creating serializer
+        serializer = WebsiteReviewSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_403_FORBIDDEN)
+    return Response(status=status.HTTP_400_BAD_REQUEST)

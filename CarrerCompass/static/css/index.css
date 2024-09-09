@@ -231,7 +231,7 @@ form input:focus
 
 .show 
 {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .footer 
@@ -288,4 +288,215 @@ form input:focus
 .jobfield-lists li a:hover 
 {
     color: var(--textColor);
+}
+
+.review-section 
+{
+    margin: 100px 0px;
+    color: var(--textColor);
+    position: relative;
+}
+
+.review-section .review-heading
+{
+    text-align: center;
+    font-family: var(--headingFont);
+    margin: 20px 0px;
+    font-size: var(--largeSize);
+    transition: all 1.5s linear;
+    opacity: 0;
+}
+
+.review-section .review-img 
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--textColor);
+}
+
+.review .fill 
+{
+    color: var(--styleColor);
+}
+
+.review-container 
+{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+}
+
+.review-container .review-list 
+{
+    width: 85%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    scroll-behavior: smooth;
+}
+
+.review 
+{
+    width: 360px;
+    height: 240px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid var(--styleColor);
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding: 10px 20px; 
+    opacity: 0;
+    transition: all 1.5s linear;
+}
+
+.review .review-profile
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review .review-profile div 
+{
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+
+.review .review-profile h3 
+{
+    font-family: var(--headingFont);
+}
+
+.review .review-profile h3 a 
+{
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.review .review-profile h3 a:hover 
+{
+    text-decoration: underline;
+}
+
+.review .review-profile span 
+{
+    font-family: var(--textFont);
+    color: var(--styleColor);
+}
+
+.review .description 
+{
+    font-family: var(--textFont);
+    word-break: break-all;
+}
+
+.leftBtn, .rightBtn 
+{
+    font-size: var(--largestSize);
+    cursor: pointer;
+    transition: all 1.5s linear;
+    opacity: 0;
+}
+
+.leftBtn:hover, .rightBtn:hover 
+{
+    color: var(--styleColor);
+}
+
+.rateBtn 
+{
+    display: block;
+    width: 120px;
+    height: 30px;
+    margin: 20px auto;
+    border: 1px solid var(--styleColor);
+    background-color: transparent;
+    color: var(--textColor);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 1s linear;
+}
+
+.rateBtn:hover 
+{
+    background-color: var(--styleColor);
+    border: 1px solid var(--textColor);
+    color: var(--backColor);
+}
+
+.rate-container 
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0,0,0,0.7);
+}
+
+.rate-box 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.rate-box input 
+{
+    margin: 10px 0px;
+    width: 300px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--styleColor);
+    color: var(--textColor);
+    border: 1px solid var(--styleColor);
+    border-radius: 15px;
+    outline: none;
+}
+
+.rate-box input:focus 
+{
+    outline: none;
+}
+
+.addBtn, .discardBtn 
+{
+    width: 80px;
+    height: 25px;
+    margin: 15px 0px;
+    border-radius: 15px;
+    background-color: transparent;
+    color: var(--textColor);
+    border: 1px solid var(--textColor);
+    cursor: pointer;
+    transition: all 1s linear;
+}
+
+.addBtn:hover, .discardBtn:hover 
+{
+    border: 1px solid var(--styleColor);
+}
+
+.rate-box .stars span 
+{
+    cursor: pointer;
+}
+
+.rate-box .stars span.fill 
+{
+    color: var(--styleColor);
 }

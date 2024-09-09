@@ -1,7 +1,7 @@
 from rest_framework import serializers 
 from jobs.models import Job, Candidate
 from registration.models import Employee, User
-from info.models import CompanyReview
+from info.models import CompanyReview, WebsiteReview
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,4 +27,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class CompanyReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyReview
+        fields = "__all__"
+
+class WebsiteReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WebsiteReview
         fields = "__all__"

@@ -4,6 +4,7 @@ from django.urls import reverse
 from .models import Job
 from registration.models import Company
 from django.db.models import Avg
+from info.models import WebsiteReview
 from datetime import datetime
 from .helpers import getPostTime
 
@@ -38,10 +39,24 @@ def index(request):
 
         job.text = getPostTime(differenceTime)
 
+    # Getting reviews for the website
+    reviews = WebsiteReview.objects.all().order_by("-rating")
+    reviews = reviews[0:5]
+
+    # Getting the type of review writer
+    for review in reviews:
+        if hasattr(review.writer, "company"):
+            review.type = "company"
+        else:
+            review.type = "employee"
+        review.ratedRating = range(review.rating)
+        review.remainRating = range(5 - review.rating)
+
     return render(request, "index.html", {
         "type" : type,
         "user" : request.user,
-        "jobs" : jobs
+        "jobs" : jobs,
+        "reviews" : reviews
     })
 
 # For posting a job offer

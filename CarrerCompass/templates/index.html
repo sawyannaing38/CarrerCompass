@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block main %}
@@ -47,7 +48,90 @@
             </div>
         </div>
     {% endif %}
+    
+    {% if reviews %}
+        <div class="review-section">
+            <h2 class="review-heading">What our happy user says</h2>
+            <div class="review-container">
+                <span class="material-symbols-outlined leftBtn">
+                    arrow_back_ios
+                </span>
+                <div class="review-list">
+                    {% for review in reviews %}
+                        <div class="review">
+                            <div class="rating">
+                                {% for _ in review.ratedRating %}
+                                    <span class="material-symbols-outlined fill">
+                                        family_star
+                                    </span>
+                                {% endfor %}
 
+                                {% for _ in review.remainRating %}
+                                    <span class="material-symbols-outlined">
+                                        family_star
+                                    </span>
+                                {% endfor %}
+                            </div>
+                            <p class="description">{{review.description}}</p>
+                            <div class="review-profile">
+                                {% if review.type == "company" %}
+                                    <a href="{% url 'companyProfile' review.writer.company.id %}">
+                                        <img src="{{review.writer.company.image.url}}" alt="{{review.writer.username}}" class="review-img">
+                                    </a>
+                                {% else %}
+                                    <a href="#">
+                                        <img src="{{review.writer.employee.image.url}}" alt="{{review.writer.username}}" class="review-img">
+                                    </a>
+                                {% endif %}
+                                <div>
+                                    {% if review.type == "company" %}
+                                        <h3><a href="{% url 'companyProfile' review.writer.company.id %}">{{review.writer.username}}</a></h3>
+                                    {% else %}
+                                        <h3><a href="#">{{review.writer.username}}</a></h3>
+                                        <span>{{review.writer.employee.profession}}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <span class="material-symbols-outlined rightBtn">
+                    arrow_forward_ios
+                </span>
+            </div>
+            {% if type != "guest" %}
+                <button class="rateBtn">Rate Us</button>
+            {% endif %}
+            <div class="rate-container">
+                <div class="rate-box">
+                    <div class="stars">
+                        <span class="material-symbols-outlined">
+                            family_star
+                        </span>
+                        <span class="material-symbols-outlined">
+                            family_star
+                        </span>
+                        <span class="material-symbols-outlined">
+                            family_star
+                        </span>
+                        <span class="material-symbols-outlined">
+                            family_star
+                        </span>
+                        <span class="material-symbols-outlined">
+                            family_star
+                        </span>
+                    </div>
+                    <input type="text" name="description" id="description" placeholder="Review" autofocus>
+                    <div>
+                        <button class="addBtn">Add</button>
+                        <button class="discardBtn">Discard</button>
+                    </div>
+                    <p id="error"></p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
 {% endblock %}
 
 {% block js %}
