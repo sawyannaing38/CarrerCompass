@@ -285,3 +285,14 @@ body
 {
     color: var(--styleColor);
 }
+
+.review-name a 
+{
+    text-decoration: none;
+    color: var(--styleColor);
+}
+
+.review-name a:hover 
+{
+    text-decoration: underline;
+}

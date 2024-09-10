@@ -15,7 +15,7 @@
         <div class="container" style="align-items: center;">
             <div class="information">
                 <h1>Sign Up here for Your Dream Job</h1>
-                <p>Already have an account?<span>Login Here</span></p>
+                <p>Already have an account?<a href="{% url 'login' %}">Login Here</a></p>
                 <form action="{% url 'employee_register' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-data" style="width: 130%;">

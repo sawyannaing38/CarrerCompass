@@ -59,14 +59,24 @@
                     </p>
                     <div class="review-profile">
                         {% if review.type == "company" %}
-                            <img src="{{review.writer.company.image.url}}" alt="{{review.writer.username}}" class="company-img">
+                            <a href="{% url 'companyProfile' review.writer.company.id %}">
+                                <img src="{{review.writer.company.image.url}}" alt="{{review.writer.username}}" class="company-img">
+                            </a>
                         {% else %}
-                            <img src="{{review.writer.employee.image.url}}" alt="{{review.writer.username}}" class="employee-img">
+                            <a href="{% url 'employeeProfile' review.writer.employee.id %}">
+                                <img src="{{review.writer.employee.image.url}}" alt="{{review.writer.username}}" class="employee-img">
+                            </a>
                         {% endif %}
                         <div>
-                            <h3 class="review-name">
-                                {{review.writer.username}}
-                            </h3>
+                            {% if type == "company" %}
+                                <h3 class="review-name">
+                                    <a href="{% url 'companyProfile' review.writer.company.id %}">{{review.writer.username}}</a>
+                                </h3>
+                            {% else %}
+                                <h3 class="review-name">
+                                    <a href="{% url 'employeeProfile' review.writer.employee.id %}">{{review.writer.username}}</a>
+                                </h3>
+                            {% endif %}
                             {% if review.type == "employee" %}
                                 <p class="review-profession">{{review.writer.employee.profession}}</p>
                             {% endif %}
